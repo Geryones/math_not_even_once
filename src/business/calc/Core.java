@@ -11,7 +11,7 @@ public class Core {
 
     public static void main(String[] args) {
 
-        Gui gui = new Gui();
+        Gui gui = Gui.getInstance();
 
 
         int rechnung;
