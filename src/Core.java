@@ -1,4 +1,6 @@
-package business.calc;
+import business.calc.CalcFactory;
+import business.calc.InterfaceCalc;
+import presentation.Gui;
 
 import presentation.Gui;
 import java.util.Scanner;
@@ -16,6 +18,7 @@ public class Core {
 
         int rechnung;
 
+/*
         Scanner scan = new Scanner(System.in);
         do {
             rechnung=((int) (Math.random() * 3));
@@ -23,7 +26,7 @@ public class Core {
             System.out.println(temp.createCalc());
             temp.correct(scan.nextInt());
 
-        }while (true);
+        }while (true);*/
 
     }
 }
