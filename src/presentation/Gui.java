@@ -3,20 +3,21 @@ package presentation;
 import business.timer.TimerClass;
 
 import javax.swing.*;
-import java.awt.*;
+
 import java.util.*;
 
 /**
  * Created by simon on 06.04.15.
  */
-public class Gui  extends JFrame implements Observer {
+public class Gui  extends JFrame  {
 
     private static Gui instance;
     GamePanel game;
     MenuPanel menu = new MenuPanel();
 
 
-    private Vector<TimerClass> observerList = new Vector<TimerClass>();
+
+
 
     private Gui() {
 
@@ -50,8 +51,8 @@ public class Gui  extends JFrame implements Observer {
         add(game).setBounds(0, 0, 800, 600);
         repaint();
 
-        TimerClass timerTeil = new TimerClass();
-        timerTeil.setRemainingTime(20);
+
+
 
 
     }
@@ -69,17 +70,7 @@ public class Gui  extends JFrame implements Observer {
     }
 
 
-    /**
-     * Muas ih no macha
-     * @param o
-     * @param arg
-     */
-    @Override
-    public void update(Observable o, Object arg) {
-        String time = (String)arg;
-        game.setTimer(time);
-        System.out.println("updatet");
-    }
+
 
 
 

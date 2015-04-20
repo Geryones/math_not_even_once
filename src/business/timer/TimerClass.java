@@ -12,6 +12,10 @@ public class TimerClass extends Observable {
 
 
     private long remainingTime=1;
+
+
+
+    private long totalDuration=0;
     Timer timer;
 
     public TimerClass() {
@@ -30,22 +34,27 @@ public class TimerClass extends Observable {
 
 
         public void run() {
-            /*if ( System.currentTimeMillis()-startTime<(getRemainingTime()*1000)) {
+            if ( System.currentTimeMillis()-startTime<(getTotalDuration()*1000)) {
                 setPassedTime(System.currentTimeMillis() - startTime);
-                System.out.println(getPassedTime());
-                setRemainingTime(5+(getPassedTime()/1000));
-                System.out.println(getRemainingTime());
+                setRemainingTime(getTotalDuration()-(getPassedTime()/1000));
+                System.out.println("vergange zeit: " + getPassedTime());
+
+                System.out.println("time remaining: "+getRemainingTime());
+
+
+
+                setChanged();
+                notifyObservers(getRemainingTime());
+
 
             } else {
 
                 System.out.println("Time's up!");
                 //timer.cancel(); //Not necessary because we call System.exit
                 System.exit(0); //Stops the AWT thread (and everything else)
-            }*/
+            }
 
-            setChanged();
-            notifyObservers(getRemainingTime());
-            System.out.println("notify excecuted");
+
         }
     }
 
@@ -68,5 +77,11 @@ public class TimerClass extends Observable {
         this.remainingTime = remainingTime;
     }
 
+    public long getTotalDuration() {
+        return totalDuration;
+    }
 
+    public void setTotalDuration(long totalDuration) {
+        this.totalDuration = totalDuration;
+    }
 }

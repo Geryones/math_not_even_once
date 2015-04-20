@@ -1,21 +1,25 @@
 package presentation;
 
+import business.timer.TimerClass;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
 import java.util.Observer;
 
 /**
  * Created by simon on 12.04.15.
  */
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements Observer {
 
     HighscoreBar highscoreBar = new HighscoreBar();
     JTextField resultInput = new JTextField();
     JLabel term = new JLabel("1337 + 42");
     JButton menu = new JButton("Menü");
     private JLabel timer;
+    TimerClass timerTeil;
 
     public GamePanel()
     {
@@ -76,11 +80,31 @@ public class GamePanel extends JPanel {
         add(timer);
 
         requestFocusInWindow();
+
+        timerTeil = new TimerClass();
+        timerTeil.setTotalDuration(20);
+
+        timerTeil.addObserver(this);
+
     }
 
     public void setTimer(String seconds){
 
         timer.setText("⌚ " + seconds + " s");
+    }
+
+    /**
+     * Muas ih no macha
+     * @param o
+     * @param arg
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        String time = String.valueOf(arg);
+
+        setTimer(time);
+
+
     }
 
 }
