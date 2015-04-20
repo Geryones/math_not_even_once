@@ -94,14 +94,20 @@ public class GamePanel extends JPanel implements Observer {
     }
 
     /**
-     * Muas ih no macha
-     * @param o
-     * @param arg
+     * Created by Jurij
+     * @param o Alle die die beobachten werden aktualisiert
+     * @param arg ein long mit der verbleibenden Zeit
      */
     @Override
     public void update(Observable o, Object arg) {
-        String time = String.valueOf(arg);
 
+
+
+        String time = String.valueOf(arg);
+        if (time.equals("0")){
+            //endGame();
+            System.out.println("Game müsste beendet werden");
+        }
         setTimer(time);
 
 

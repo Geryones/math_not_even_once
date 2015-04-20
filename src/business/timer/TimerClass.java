@@ -5,19 +5,23 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Created by mai714
+ * TimerClass für die Zeitberechnungen
+ * seperater Thread
+ */
 public class TimerClass extends Observable {
 
 
     private long passedTime;
-
-
     private long remainingTime=1;
-
-
-
     private long totalDuration=0;
     Timer timer;
 
+    /**
+     * Constructer für die TimerClass
+     * hier wird ein neuer Task definiert
+     */
     public TimerClass() {
 
 
@@ -28,11 +32,17 @@ public class TimerClass extends Observable {
 
     }
 
+    /**
+     * Klasse mit Runnable für seperatem Thread
+     */
     class RemindTask extends TimerTask {
         //int numWarningBeeps = 10;
         long startTime=System.currentTimeMillis();
 
-
+        /**
+         * seperater Thread
+         * hier wird überprüft wie lange man Eingaben machen kann
+         */
         public void run() {
             if ( System.currentTimeMillis()-startTime<(getTotalDuration()*1000)) {
                 setPassedTime(System.currentTimeMillis() - startTime);
@@ -48,10 +58,12 @@ public class TimerClass extends Observable {
 
 
             } else {
+                setChanged();
+                notifyObservers(0);
 
                 System.out.println("Time's up!");
-                //timer.cancel(); //Not necessary because we call System.exit
-                System.exit(0); //Stops the AWT thread (and everything else)
+                timer.cancel(); //Not necessary because we call System.exit
+                //System.exit(0); //Stops the AWT thread (and everything else)
             }
 
 
