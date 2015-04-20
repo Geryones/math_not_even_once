@@ -45,7 +45,8 @@ public class Gui  extends JFrame  {
     }
 
     public void startGame(int difficulty) {
-        // TODO: switch statement for difficulty
+        //Switch-Statement nicht nötig
+       //InterfaceCalc temp = CalcFactory.getInstance().createCalculation(difficulty);
         remove(menu);
         game = new GamePanel();
         add(game).setBounds(0, 0, 800, 600);
