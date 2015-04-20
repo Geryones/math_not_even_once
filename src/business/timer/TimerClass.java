@@ -1,10 +1,11 @@
 package business.timer;
 
 
+import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TimerClass {
+public class TimerClass extends Observable {
 
 
     private long passedTime;
@@ -20,6 +21,7 @@ public class TimerClass {
         timer = new Timer();
         timer.scheduleAtFixedRate(new RemindTask(), 0, //initial delay
                 1*1000 ); //subsequent rate
+
     }
 
     class RemindTask extends TimerTask {
@@ -28,17 +30,22 @@ public class TimerClass {
 
 
         public void run() {
-            if ( System.currentTimeMillis()-startTime<(getRemainingTime()*1000)) {
+            /*if ( System.currentTimeMillis()-startTime<(getRemainingTime()*1000)) {
                 setPassedTime(System.currentTimeMillis() - startTime);
                 System.out.println(getPassedTime());
                 setRemainingTime(5+(getPassedTime()/1000));
                 System.out.println(getRemainingTime());
+
             } else {
 
                 System.out.println("Time's up!");
                 //timer.cancel(); //Not necessary because we call System.exit
                 System.exit(0); //Stops the AWT thread (and everything else)
-            }
+            }*/
+
+            setChanged();
+            notifyObservers(getRemainingTime());
+            System.out.println("notify excecuted");
         }
     }
 

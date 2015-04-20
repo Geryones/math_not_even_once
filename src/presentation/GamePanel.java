@@ -4,16 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observer;
 
 /**
  * Created by simon on 12.04.15.
  */
-public class GamePanel extends JPanel{
+public class GamePanel extends JPanel {
 
     HighscoreBar highscoreBar = new HighscoreBar();
     JTextField resultInput = new JTextField();
     JLabel term = new JLabel("1337 + 42");
     JButton menu = new JButton("Menü");
+    private JLabel timer;
 
     public GamePanel()
     {
@@ -66,7 +68,7 @@ public class GamePanel extends JPanel{
         add(this.menu);
 
         // the countdown
-        JLabel timer = new JLabel("⌚ " + "23" + " s");
+        timer = new JLabel("⌚ " + "23" + " s");
         timer.setBounds(400, 500, 350, 50);
         timer.setBackground(Color.cyan);
         timer.setFont(new Font("SansSerif", Font.PLAIN, 50));
@@ -75,4 +77,10 @@ public class GamePanel extends JPanel{
 
         requestFocusInWindow();
     }
+
+    public void setTimer(String seconds){
+
+        timer.setText("⌚ " + seconds + " s");
+    }
+
 }

@@ -1,16 +1,22 @@
 package presentation;
 
+import business.timer.TimerClass;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 /**
  * Created by simon on 06.04.15.
  */
-public class Gui extends JFrame {
+public class Gui  extends JFrame implements Observer {
 
     private static Gui instance;
     GamePanel game;
     MenuPanel menu = new MenuPanel();
+
+
+    private Vector<TimerClass> observerList = new Vector<TimerClass>();
 
     private Gui() {
 
@@ -26,6 +32,8 @@ public class Gui extends JFrame {
 
         setVisible(true); // setVisible should be called last to assure the JFrame is not blank
         requestFocusInWindow();
+
+
     }
 
     public void showMenu() {
@@ -41,6 +49,11 @@ public class Gui extends JFrame {
         game = new GamePanel();
         add(game).setBounds(0, 0, 800, 600);
         repaint();
+
+        TimerClass timerTeil = new TimerClass();
+        timerTeil.setRemainingTime(20);
+
+
     }
 
     public void endGame() {
@@ -54,4 +67,22 @@ public class Gui extends JFrame {
         }
         return Gui.instance;
     }
+
+
+    /**
+     * Muas ih no macha
+     * @param o
+     * @param arg
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        String time = (String)arg;
+        game.setTimer(time);
+        System.out.println("updatet");
+    }
+
+
+
+
+
 }

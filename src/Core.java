@@ -16,9 +16,11 @@ public class Core {
         Gui gui = Gui.getInstance();
 
 
-        int rechnung;
+
+
 
 /*
+        int rechnung;
         Scanner scan = new Scanner(System.in);
         do {
             rechnung=((int) (Math.random() * 3));
