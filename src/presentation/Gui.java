@@ -45,7 +45,7 @@ public class Gui  extends JFrame  {
     }
 
     public void startGame(int difficulty) {
-        //Switch-Statement nicht nötig
+        //Switch-Statement nicht nötig die difficulty kann direkt weitergereicht werden
        //InterfaceCalc temp = CalcFactory.getInstance().createCalculation(difficulty);
         remove(menu);
         game = new GamePanel();

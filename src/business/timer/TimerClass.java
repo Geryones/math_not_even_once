@@ -7,8 +7,8 @@ import java.util.TimerTask;
 
 /**
  * Created by mai714
- * TimerClass für die Zeitberechnungen
- * seperater Thread
+ * TimerClass is for time management
+ * sperated thread
  */
 public class TimerClass extends Observable {
 
@@ -19,8 +19,8 @@ public class TimerClass extends Observable {
     Timer timer;
 
     /**
-     * Constructer für die TimerClass
-     * hier wird ein neuer Task definiert
+     * Constructer
+     * definition of the new Thread
      */
     public TimerClass() {
 
@@ -33,15 +33,15 @@ public class TimerClass extends Observable {
     }
 
     /**
-     * Klasse mit Runnable für seperatem Thread
+     * Class which includes the runnable
      */
     class RemindTask extends TimerTask {
         //int numWarningBeeps = 10;
         long startTime=System.currentTimeMillis();
 
         /**
-         * seperater Thread
-         * hier wird überprüft wie lange man Eingaben machen kann
+         * seperated Thread
+         * Calculates the time you have to solve the terms
          */
         public void run() {
             if ( System.currentTimeMillis()-startTime<(getTotalDuration()*1000)) {

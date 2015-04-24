@@ -95,8 +95,8 @@ public class GamePanel extends JPanel implements Observer {
 
     /**
      * Created by Jurij
-     * @param o Alle die die beobachten werden aktualisiert
-     * @param arg ein long mit der verbleibenden Zeit
+     * @param o All the observers are being updated
+     * @param arg contains a long with the time-value
      */
     @Override
     public void update(Observable o, Object arg) {
