@@ -1,23 +1,38 @@
 package game;
 
+import persistence.HighScoreFileDAO;
+
+import java.io.Serializable;
+
 /**
  * Created by mai714 on 24.04.2015.
  */
-public class Game {
+public class Game implements Serializable{
     private int score;
     private int difficulty;
     private long remainingTime;
     private String playerName;
 
 
+    /**
+     * Function to check if a value is a highscore
+     * @param score your score
+     * @return true or false
+     */
+   public boolean isHighScore(int score){
+
+       HighScoreFileDAO loadHighScore = new HighScoreFileDAO();
+        int temp;
+
+        for (int i=0;i< loadHighScore.getHighScoreList().size();i++){
+            temp= loadHighScore.getHighScoreList().get(i).getScore();
+            if (score>temp){
+                return true;
+            }
+        }
 
 
-    //TODO: Function to check if a score is high enough to be a highscore, for that we have to check the file with the saved scores
-    public boolean isHighScore(int score){
-        boolean isHighScore = false;
-
-
-        return isHighScore;
+        return false;
     }
 
 

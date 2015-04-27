@@ -1,6 +1,6 @@
 package persistence;
 
-import game.HighScore;
+import game.PlayerScore;
 
 import java.util.ArrayList;
 
@@ -8,6 +8,6 @@ import java.util.ArrayList;
  * Created by mai714 on 24.04.2015.
  */
 public interface HighScoreDAO {
-    public void saveHighScore(HighScore highScore);
-    public ArrayList<String> getHighScore();
+    public void saveHighScore(PlayerScore playerScore);
+    public ArrayList<PlayerScore> getHighScoreList() ;
 }
