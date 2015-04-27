@@ -24,32 +24,35 @@ public class HighScoreFileDAO implements HighScoreDAO {
      */
     @Override
     public void saveHighScore(PlayerScore playerScore) {
-        ArrayList<PlayerScore> highScoreList = null;
+        ArrayList<PlayerScore> highScoreList = getHighScoreList();
 
-        if (game.isHighScore(playerScore.getScore())) {
+        //if the score is higher than the lowest value, or there are less than 5 entries.
+
+        if (game.isHighScore(playerScore.getScore()) && highScoreList.size() == 5) {
 
             highScoreList = getHighScoreList();
             highScoreList.add(playerScore);
-            highScoreList=sortHighScoreList(highScoreList);
-
+            highScoreList = sortHighScoreList(highScoreList);
             highScoreList.remove(0);
-
-
-
-            try {
-                FileOutputStream fileOutput = new FileOutputStream("C:\\Users\\mai714\\IdeaProjects\\mathe\\src\\game\\highScore.ser");
-                ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-
-                objectOutput.writeObject(highScoreList);
-                objectOutput.close();
-                fileOutput.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } else if (highScoreList.size() < 5) {
+            highScoreList.add(playerScore);
         }
 
+
+        try {
+            FileOutputStream fileOutput = new FileOutputStream("C:\\Users\\mai714\\IdeaProjects\\mathe\\src\\game\\highScore.ser");
+            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+
+            objectOutput.writeObject(highScoreList);
+            objectOutput.close();
+            fileOutput.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+
 
     /**
      * Function to pass a list of PlayersScore-Objects and Save them

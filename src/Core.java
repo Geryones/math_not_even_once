@@ -30,9 +30,13 @@ public class Core {
         test3.setPlayerName("hubi");
         test3.setScore(5);
 
+
+
         test.add(test1);
         test.add(test2);
         test.add(test3);
+
+
         for (PlayerScore a : test){
             System.out.println(a.getScore());
         }
@@ -48,9 +52,23 @@ public class Core {
         PlayerScore ersatz = new PlayerScore();
         ersatz.setPlayerName("penis");
         ersatz.setScore(1220);
+
         System.out.println("added new player");
+
+        PlayerScore funf = new PlayerScore();
+        funf.setPlayerName("testaös");
+        funf.setScore(45);
+
+        PlayerScore sechs = new PlayerScore();
+        sechs.setPlayerName("ö$ask");
+        sechs.setScore(4);
+
         file.saveHighScore(ersatz);
-        for (PlayerScore a: file.getHighScoreList()){
+        file.saveHighScore(funf);
+        file.saveHighScore(sechs);
+
+
+        for (PlayerScore a: file.sortHighScoreList(file.getHighScoreList())){
             System.out.println(a.getScore());
         }
 
