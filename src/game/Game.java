@@ -12,28 +12,7 @@ public class Game implements Serializable{
     private int difficulty;
     private long remainingTime;
     private String playerName;
-
-
-    /**
-     * Function to check if a value is a highscore
-     * @param score your score
-     * @return true or false
-     */
-   public boolean isHighScore(int score){
-
-       HighScoreFileDAO loadHighScore = new HighScoreFileDAO();
-        int temp;
-
-        for (int i=0;i< loadHighScore.getHighScoreList().size();i++){
-            temp= loadHighScore.getHighScoreList().get(i).getScore();
-            if (score>temp){
-                return true;
-            }
-        }
-
-
-        return false;
-    }
+    private int countSolvedCalculations;
 
 
     public int getScore() {
@@ -67,4 +46,14 @@ public class Game implements Serializable{
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
+
+    public int getCountSolvedCalculations() {
+        return countSolvedCalculations;
+    }
+
+    public void setCountSolvedCalculations(int countSolvedCalculations) {
+        this.countSolvedCalculations = countSolvedCalculations;
+    }
+
+
 }

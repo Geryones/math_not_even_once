@@ -64,12 +64,12 @@ public class MediumCalc extends AbstractCalc {
      * @param result your Result
      */
     @Override
-    public void correct(int result) {
+    public boolean correct(int result) {
         if (result==getResult()){
-            System.out.println("True that");
+           return true;
         }
         else
-            System.out.println("nope " +getResult());
+            return false;
 
     }
 

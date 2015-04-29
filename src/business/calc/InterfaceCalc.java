@@ -15,6 +15,6 @@ public interface InterfaceCalc {
      * Checks if you solved a Calculation correctly
      * @param result your Result
      */
-    public void correct(int result);
+    public boolean correct(int result);
 
 }

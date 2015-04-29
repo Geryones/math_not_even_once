@@ -44,15 +44,10 @@ public class TimerClass extends Observable {
          * Calculates the time you have to solve the terms
          */
         public void run() {
+
             if ( System.currentTimeMillis()-startTime<(getTotalDuration()*1000)) {
                 setPassedTime(System.currentTimeMillis() - startTime);
                 setRemainingTime(getTotalDuration()-(getPassedTime()/1000));
-                System.out.println("vergange zeit: " + getPassedTime());
-
-                System.out.println("time remaining: "+getRemainingTime());
-
-
-
                 setChanged();
                 notifyObservers(getRemainingTime());
 

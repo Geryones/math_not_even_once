@@ -1,7 +1,6 @@
 package game;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * Created by mai714 on 24.04.2015.

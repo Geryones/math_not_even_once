@@ -1,6 +1,6 @@
 package persistence;
 
-import game.Game;
+
 import game.PlayerScore;
 
 import java.io.*;
@@ -14,12 +14,12 @@ import java.util.Comparator;
  * Class to Read and Save the HighScore
  */
 public class HighScoreFileDAO implements HighScoreDAO {
-    Game game = new Game();
+    private int maxHighScoreSize=10;
 
 
     /**
-     * Function 2 save a new HighScore
-     * First it checks if the HighScore is actually a Highscore and then saves the list
+     * Function to save a new HighScore
+     * First it checks if the HighScore is actually a Highscore  and then saves the list
      * @param playerScore
      */
     @Override
@@ -28,13 +28,14 @@ public class HighScoreFileDAO implements HighScoreDAO {
 
         //if the score is higher than the lowest value, or there are less than 5 entries.
 
-        if (game.isHighScore(playerScore.getScore()) && highScoreList.size() == 5) {
+        if (isHighScore(playerScore.getScore()) && highScoreList.size() == maxHighScoreSize) {
 
             highScoreList = getHighScoreList();
             highScoreList.add(playerScore);
             highScoreList = sortHighScoreList(highScoreList);
             highScoreList.remove(0);
-        } else if (highScoreList.size() < 5) {
+        //if there arent 10 objects in the list, the new one is just being added
+        } else if (highScoreList.size() < maxHighScoreSize) {
             highScoreList.add(playerScore);
         }
 
@@ -111,6 +112,23 @@ public class HighScoreFileDAO implements HighScoreDAO {
         });
 
         return highScoreList;
+    }
+
+
+    public boolean isHighScore(int score){
+
+
+        int temp;
+
+        for (int i=0;i<getHighScoreList().size();i++){
+            temp= getHighScoreList().get(i).getScore();
+            if (score>temp){
+                return true;
+            }
+        }
+
+
+        return false;
     }
 
 }

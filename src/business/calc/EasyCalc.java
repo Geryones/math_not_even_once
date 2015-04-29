@@ -68,12 +68,12 @@ public class EasyCalc extends AbstractCalc {
      * Checks your Result against the actual one
      * @param result your Result
      */
-    public void correct(int result){
+    public boolean correct(int result){
         if (result==getResult()){
-            System.out.println("True that");
+            return true;
         }
         else
-            System.out.println("nope " +getResult());
+          return false;
     }
 
     public int getResult() {
