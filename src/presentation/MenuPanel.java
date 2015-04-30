@@ -1,9 +1,13 @@
 package presentation;
 
+import business.businessGame.BusinessGame;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * The menu.
@@ -19,11 +23,15 @@ public class MenuPanel extends JPanel {
     JButton exit = new JButton("Beenden");
     JButton highscore = new JButton("Highscore");
     JButton help = new JButton("Hilfe");
+    private JLabel savedGame=new JLabel();
+    BusinessGame newBusinessGame;
+
 
     public MenuPanel() {
         setLayout(null);
 
         ClickListener cl = new ClickListener();
+        BusinessGame businessGame = new BusinessGame();
 
         JLabel title1 = new JLabel("Math");
         title1.setFont(new Font("SansSerif", Font.PLAIN, 80));
@@ -54,14 +62,23 @@ public class MenuPanel extends JPanel {
         loadGame.setHorizontalAlignment(JLabel.CENTER);
         add(loadGame).setBounds(400, 200, 400, 25);
 
-        JLabel savedGame = new JLabel("<HTML>" +
-                                      "Schwierigkeitsgrad: " + "<br>" +
-                                      "Gelöste Rechnungen: " + "<br>" +
-                                      "Ungelöste Rechnungen: " + "<br>" +
-                                      "Verbleibende Zeit: " +
-                                      "</HTML>");
+
+        newBusinessGame=businessGame.loadGame();
+
+        if (newBusinessGame==null){
+            savedGame.setText("Zurzeit kein gespeichertes Spiel");
+        }else{
+            savedGame.setText("<HTML>" +
+                    "SpielerName: " + newBusinessGame.getPlayerName() + "<br>" +
+                    "Schwierigkeitsgrad: " + newBusinessGame.getDifficulty() + "<br>" +
+                    "Gelöste Rechnungen: " + newBusinessGame.getCountSolvedCalculations() + "<br>" +
+                    "Score: " + newBusinessGame.getScore() + "<br>" +
+                    "Verbleibende Zeit: " + newBusinessGame.getRemainingTime() +
+                    "</HTML>");
+        }
+
         add(savedGame).setBounds(500,250,300,80);
-        // TODO: "Kein Spiel gespeichert" if no saved game exits
+
 
         load.addActionListener(cl);
         add(load).setBounds(500, 370, 200, 50);
@@ -69,8 +86,9 @@ public class MenuPanel extends JPanel {
         // footer navigation and copyright
         JPanel footer = new JPanel();
         footer.setLayout(new FlowLayout());
-        add(footer).setBounds(0,560,300,40);
+        add(footer).setBounds(0,530,300,40);
         footer.add(exit);
+        exit.addActionListener(cl);
         footer.add(highscore);
         footer.add(help);
         JLabel copyright = new JLabel("© 2015 Jurij Maïkoff, Simon Leber");
@@ -82,15 +100,15 @@ public class MenuPanel extends JPanel {
     private class ClickListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == easy) {
-                Gui.getInstance().startGame(1);
+                Gui.getInstance().startGame(0);
             } else if (e.getSource() == medium) {
-                Gui.getInstance().startGame(2);
+                Gui.getInstance().startGame(1);
             } else if (e.getSource() == hard) {
-                Gui.getInstance().startGame(3);
+                Gui.getInstance().startGame(2);
             } else if (e.getSource() == load) {
-
+                Gui.getInstance().loadGame(newBusinessGame);
             } else if (e.getSource() == exit) {
-
+                System.exit(0);
             } else if (e.getSource() == highscore) {
 
             } else if (e.getSource() == help) {

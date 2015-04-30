@@ -1,13 +1,13 @@
 package game;
 
-import persistence.HighScoreFileDAO;
+
 
 import java.io.Serializable;
 
 /**
  * Created by mai714 on 24.04.2015.
  */
-public class Game implements Serializable{
+public class Game{
     private int score;
     private int difficulty;
     private long remainingTime;

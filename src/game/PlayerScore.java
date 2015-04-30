@@ -6,9 +6,7 @@ import java.io.Serializable;
  * Created by mai714 on 24.04.2015.
  * Class which holds the players name and score
  */
-public class PlayerScore implements Serializable{
-
-
+public class PlayerScore{
 
     private String playerName;
     private int score;

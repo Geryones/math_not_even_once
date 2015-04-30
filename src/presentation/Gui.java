@@ -1,5 +1,6 @@
 package presentation;
 
+import business.businessGame.BusinessGame;
 import business.timer.TimerClass;
 
 import javax.swing.*;
@@ -39,23 +40,36 @@ public class Gui  extends JFrame  {
 
     public void showMenu() {
         endGame();
+        //TODO: we need some form of updating the menu panel, after i save a game and return to the menu, the old game is still there
+        //menu= new MenuPanel(); if do this, the saved game is being updated, but i loose the 3 buttons
         if(game != null) remove(game);
         add(menu).setBounds(0, 0, 800, 600);
         repaint();
     }
 
     public void startGame(int difficulty) {
-        //Switch-Statement nicht nötig die difficulty direkt weitergereicht werden kann
-       //InterfaceCalc temp = CalcFactory.getInstance().createCalculation(difficulty);
         remove(menu);
         game = new GamePanel(difficulty);
         add(game).setBounds(0, 0, 800, 600);
         repaint();
+    }
 
-
-
-
-
+    /**
+     * Created by Jurij
+     * Reads a previously saved File, which contains all the information for a Game
+     * @param businessGame a BusinessObject which holds the necessary information
+     */
+    public void loadGame(BusinessGame businessGame) {
+        remove(menu);
+        game = new GamePanel(businessGame.getDifficulty());
+        game.timerTeil.setTotalDuration(businessGame.getRemainingTime());
+        game.game.setDifficulty(businessGame.getDifficulty());
+        game.game.setRemainingTime(businessGame.getRemainingTime());
+        game.game.setPlayerName(businessGame.getPlayerName());
+        game.game.setCountSolvedCalculations(businessGame.getCountSolvedCalculations());
+        game.game.setScore(businessGame.getScore());
+        add(game).setBounds(0, 0, 800, 600);
+        repaint();
     }
 
     public void endGame() {

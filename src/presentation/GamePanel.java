@@ -1,9 +1,12 @@
 package presentation;
 
+import business.businessGame.BusinessGame;
+import business.businessGame.BusinessPlayerScore;
 import business.calc.CalcFactory;
 import business.calc.InterfaceCalc;
 import business.timer.TimerClass;
 import game.Game;
+import game.PlayerScore;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +26,8 @@ public class GamePanel extends JPanel implements Observer {
     private JButton menu = new JButton("Menü");
     private JLabel timer;
     private JButton ok;
+    private  JButton save = new JButton("Speichern");
+    private boolean isSaving=false;
 
 
      //von Jurij
@@ -30,6 +35,8 @@ public class GamePanel extends JPanel implements Observer {
     Handler theHandler = new Handler();
     TimerClass timerTeil;
     Game game = new Game();
+    PlayerScore playerScore= new PlayerScore();
+    BusinessGame businessGame;
 
 
     private int difficulty;
@@ -71,8 +78,8 @@ public class GamePanel extends JPanel implements Observer {
 
         // save and menu button
         Font bottomButtons = new Font("SansSerif", Font.BOLD, 15);
-        JButton save = new JButton("Speichern");
         save.setFont(bottomButtons);
+        save.addActionListener(theHandler);
         save.setBounds(50, 515, 120, 30);
         add(save);
 
@@ -80,6 +87,7 @@ public class GamePanel extends JPanel implements Observer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Gui.getInstance().showMenu();
+                timerTeil.setIsRunning(false);
             }
         };
         this.menu.setFont(bottomButtons);
@@ -99,7 +107,7 @@ public class GamePanel extends JPanel implements Observer {
 
         //Adding the timer to the Gui
         timerTeil = new TimerClass();
-        timerTeil.setTotalDuration(2);
+        timerTeil.setTotalDuration(60);
 
         timerTeil.addObserver(this);
 
@@ -111,6 +119,10 @@ public class GamePanel extends JPanel implements Observer {
 
     }
 
+    /**
+     * Sets the remaining time on the gamePanel
+     * @param seconds remaining seconds
+     */
     public void setTimer(String seconds) {
 
         timer.setText("⌚ " + seconds + " s");
@@ -124,16 +136,10 @@ public class GamePanel extends JPanel implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
-
-
         String time = String.valueOf(arg);
+        //System.out.println(timerTeil.getRemainingTime());
         if (time.equals("0")) {
-            term.setText("Your Score: "+game.getScore());
-
-            resultInput.setText("Enter your Name");
-
-
-
+            prepareTheEnd();
         }
         setTimer(time);
 
@@ -154,33 +160,86 @@ public class GamePanel extends JPanel implements Observer {
     }
 
     /**
+     * Created by Jurij
      * Class to determine the behaviour of the OK-Button
      */
     public class Handler implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
-            // As soon as the timer hits zero, things get messed up... if there is a string in the result input, and you hit oke, it throws  an error
-            //if the field is empty and you hit enter nothing happens, it seems it never reaches this if-else structure
-         /*   if (timerTeil.getRemainingTime()==0){
-
-                game.setPlayerName(resultInput.getText());
-            }else */if (calcInterface.correct(Integer.parseInt(resultInput.getText()))) {
-
-               setCalc(getDifficulty());
-               resultInput.setText(null);
-               game.setCountSolvedCalculations(game.getCountSolvedCalculations() + 1);
-               game.setScore(game.getScore() + (1 * difficulty));
-               timerTeil.setTotalDuration(timerTeil.getTotalDuration() + 10);
-
-           }
+            /*
+            If the the cursor is in the resultInput and you hit Enter
+            clickinig the OK-button
+             */
+            if(e.getSource()==ok|| e.getSource()==resultInput) {
 
 
+                // Do nothing if there is nothing in the resultInput
+                if(resultInput.getText().equals("")){
 
+                    /*
+                    If the time is 0, and the user is not Saving, come here
+                     */
+                }else if (timerTeil.getRemainingTime() == 0 && !isSaving) {
+
+
+                    playerScore.setPlayerName(resultInput.getText());
+                    playerScore.setScore(game.getScore());
+                    BusinessPlayerScore businessPlayerScore = new BusinessPlayerScore(playerScore);
+                    businessPlayerScore.safePlayerScore();
+                    Gui.getInstance().showMenu();
+
+                    /*
+                    If the user is not saving and the entered Number is correct
+                    maybe errors if you enter a string which is not numbers only
+                     */
+                } else if ( !isSaving && calcInterface.correct(Integer.parseInt(resultInput.getText())) ) {
+
+
+                    setCalc(getDifficulty());
+                    resultInput.setText(null);
+                    game.setCountSolvedCalculations(game.getCountSolvedCalculations() + 1);
+                    game.setScore(game.getScore() + (1 * (difficulty+1)));
+                    timerTeil.setTotalDuration(timerTeil.getTotalDuration() + 10);
+                    /*
+                     if the user wants to safe, the boolean isSaving brings you here
+                      All the necessary Information is transfered and saved
+                     */
+                }else if(isSaving){
+
+                    game.setPlayerName(resultInput.getText());
+                    businessGame=new BusinessGame(game);
+                    businessGame.safeGame();
+                    Gui.getInstance().showMenu();
+
+
+                }
+            /*
+            if you hit the save button midgame
+            the timer gets canceld
+             */
+            }else if(e.getSource().equals(save)){
+                game.setRemainingTime(timerTeil.getRemainingTime());
+                timerTeil.setIsRunning(false);
+                isSaving=true;
+                prepareTheEnd();
+
+
+
+
+            }
 
 
         }
+    }
+
+    /**
+     * Preparation for exiting the gamePanel
+     */
+    public void prepareTheEnd(){
+        term.setText("Your Score: "+game.getScore());
+        resultInput.setText("Enter your Name");
+
     }
 
     public int getDifficulty() {
