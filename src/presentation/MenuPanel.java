@@ -136,7 +136,6 @@ public class MenuPanel extends JPanel {
                 System.exit(0);
             } else if (e.getSource() == highscore) {
                 Gui.getInstance().showHighScore();
-
             } else if (e.getSource() == help) {
 
             }

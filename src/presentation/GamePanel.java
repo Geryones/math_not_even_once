@@ -39,6 +39,7 @@ public class GamePanel extends JPanel implements Observer {
     BusinessGame businessGame;
 
 
+
     private int difficulty;
 
 
@@ -73,7 +74,7 @@ public class GamePanel extends JPanel implements Observer {
 
         // the highscore bar
         highscoreBar.setBounds(48, 400, 701, 100);
-        highscoreBar.paintBar(150);
+        //highscoreBar.paintBar(150);
         add(highscoreBar);
 
         // save and menu button
@@ -107,7 +108,7 @@ public class GamePanel extends JPanel implements Observer {
 
         //Adding the timer to the Gui
         timerTeil = new TimerClass();
-        timerTeil.setTotalDuration(2);
+        timerTeil.setTotalDuration(60);
 
         timerTeil.addObserver(this);
 
@@ -198,8 +199,10 @@ public class GamePanel extends JPanel implements Observer {
                     setCalc(getDifficulty());
                     resultInput.setText(null);
                     game.setCountSolvedCalculations(game.getCountSolvedCalculations() + 1);
-                    game.setScore(game.getScore() + (1 * (difficulty+1)));
-                    timerTeil.setTotalDuration(timerTeil.getTotalDuration() + 10);
+                    game.setScore(game.getScore() + (difficulty+1));
+                    timerTeil.setTotalDuration(timerTeil.getTotalDuration() + 10*(1+difficulty));
+                    highscoreBar.setHighScoreProgress(game.getScore());
+
                     /*
                      if the user wants to safe, the boolean isSaving brings you here
                       All the necessary Information is transfered and saved

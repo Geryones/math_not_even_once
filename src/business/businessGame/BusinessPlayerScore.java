@@ -61,6 +61,10 @@ public class BusinessPlayerScore  implements Serializable {
         return highScoreFileDAO.sortHighTopHighScoreList(loadHighScore());
     }
 
+    public int getTheHighScore(){
+        return sortHighScoreDesc().get(0).getPlayerScore();
+    }
+
 
     public String getPlayerName() {
         return playerName;

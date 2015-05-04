@@ -5,6 +5,7 @@ import game.PlayerScore;
 import persistence.HighScoreDAO;
 import persistence.HighScoreFileDAO;
 import presentation.Gui;
+import presentation.HighscoreBar;
 
 import java.util.ArrayList;
 
@@ -21,17 +22,18 @@ public class Core {
 
       Gui.getInstance();
 
+
         /*
         Hier habe ich manuell eine HighScore liste erstellt, da ich auf Probleme stiess beim laden der list, weiss noch nicht genau was es war,
         da nachdem ich diese einträge hinzugefügt habe, alles wieder funktioniert hat
          */
-     /* PlayerScore one = new PlayerScore();
+        /*PlayerScore one = new PlayerScore();
         PlayerScore two = new PlayerScore();
 
         one.setPlayerName("Geryones");
         two.setPlayerName("Max");
-        one.setScore(93);
-        two.setScore(64);
+        one.setScore(50);
+        two.setScore(25);
 
         BusinessPlayerScore pl1 = new BusinessPlayerScore(one);
         BusinessPlayerScore pl2 = new BusinessPlayerScore(two);
@@ -48,8 +50,8 @@ public class Core {
         drei.setPlayerName("Fritz");
 
         BusinessPlayerScore pl3 = new BusinessPlayerScore(drei);
-        pl3.safePlayerScore();
-*/
+        pl3.safePlayerScore();*/
+
 
 
 

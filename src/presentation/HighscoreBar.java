@@ -1,11 +1,15 @@
 package presentation;
 
+
+
+import business.businessGame.BusinessPlayerScore;
+
 import java.awt.*;
 import javax.swing.*;
 
 public class HighscoreBar extends JPanel
 {
-    int score = 0;
+   /* int score = 0;
     int highscore = 200; //TODO: set dynamically
     int progress;
 
@@ -43,5 +47,33 @@ public class HighscoreBar extends JPanel
             g.setFont(new Font("SansSerif", Font.PLAIN, 25));
             g.drawString("Neue Highscore!",242,32);
         }
+    }*/
+
+    /**
+     * Created by Jurij
+     */
+    private JProgressBar progressBar;
+    BusinessPlayerScore businessPlayerScore = new BusinessPlayerScore();
+
+    /**
+     * Constructor to initialise a progressBar
+     */
+    public HighscoreBar(){
+        setLayout(null);
+        if (businessPlayerScore==null){
+            progressBar= new JProgressBar(0,0);
+        }else {
+            progressBar = new JProgressBar(0, businessPlayerScore.getTheHighScore());
+        }
+        progressBar.setValue(0);
+        progressBar.setStringPainted(true);
+        progressBar.setBackground(Color.black);
+        add(progressBar).setBounds(0,0,700,50);
+
+
+    }
+
+    public void setHighScoreProgress(int score){
+        progressBar.setValue(score);
     }
 }

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Created by mai714 on 04.05.2015.
+ * Panel where u can see the whole HighScore-List
  */
 public class HighScorePanel extends JPanel {
 
@@ -21,7 +22,9 @@ public class HighScorePanel extends JPanel {
    ArrayList<JLabel> labelArrayList = new ArrayList<JLabel>();
     private JButton menu = new JButton("Menü");
 
-
+    /**
+     * Constructor, 10 JLabel's are created and filled with PlayerName and the Score
+     */
     public HighScorePanel(){
         setLayout(null);
 

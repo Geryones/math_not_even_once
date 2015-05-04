@@ -68,7 +68,9 @@ public class Gui  extends JFrame  {
         game.game.setPlayerName(businessGame.getPlayerName());
         game.game.setCountSolvedCalculations(businessGame.getCountSolvedCalculations());
         game.game.setScore(businessGame.getScore());
+        game.highscoreBar.setHighScoreProgress(game.game.getScore());
         add(game).setBounds(0, 0, 800, 600);
+
         repaint();
     }
 
