@@ -27,7 +27,7 @@ public class Core {
         Hier habe ich manuell eine HighScore liste erstellt, da ich auf Probleme stiess beim laden der list, weiss noch nicht genau was es war,
         da nachdem ich diese einträge hinzugefügt habe, alles wieder funktioniert hat
          */
-        /*PlayerScore one = new PlayerScore();
+       /* PlayerScore one = new PlayerScore();
         PlayerScore two = new PlayerScore();
 
         one.setPlayerName("Geryones");

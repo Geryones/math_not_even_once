@@ -2,10 +2,11 @@ package game;
 
 
 
-import java.io.Serializable;
 
 /**
+ *
  * Created by mai714 on 24.04.2015.
+ *
  */
 public class Game{
     private int score;

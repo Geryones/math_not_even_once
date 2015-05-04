@@ -137,6 +137,7 @@ public class MenuPanel extends JPanel {
             } else if (e.getSource() == highscore) {
                 Gui.getInstance().showHighScore();
             } else if (e.getSource() == help) {
+                System.out.println("not yet implemented");
 
             }
         }

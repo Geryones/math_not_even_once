@@ -17,13 +17,14 @@ import java.util.Observer;
 
 /**
  * Created by simon on 12.04.15.
+ *
  */
 public class GamePanel extends JPanel implements Observer {
 
     HighscoreBar highscoreBar = new HighscoreBar();
     private JTextField resultInput = new JTextField();
     private JLabel term = new JLabel();
-    private JButton menu = new JButton("Menü");
+
     private JLabel timer;
     private JButton ok;
     private  JButton save = new JButton("Speichern");
@@ -44,11 +45,14 @@ public class GamePanel extends JPanel implements Observer {
 
 
     public GamePanel(int difficulty) {
+
+        JButton menu = new JButton("Menü");
+
         setLayout(null); // no layout manager but absolute positioning
 
         // the term to calculate
         this.term.setBounds(0, 120, 800, 80);
-        this.term.setFont(new Font("SansSerif", Font.PLAIN, 80));
+        this.term.setFont(new Font("SansSerif", Font.PLAIN, 50));
         this.term.setHorizontalAlignment(JLabel.CENTER);
         add(term);
 
@@ -91,10 +95,10 @@ public class GamePanel extends JPanel implements Observer {
                 timerTeil.setIsRunning(false);
             }
         };
-        this.menu.setFont(bottomButtons);
-        this.menu.setBounds(180, 515, 120, 30);
-        this.menu.addActionListener(menuButtonListener);
-        add(this.menu);
+        menu.setFont(bottomButtons);
+        menu.setBounds(180, 515, 120, 30);
+        menu.addActionListener(menuButtonListener);
+        add(menu);
 
         // the countdown
         timer = new JLabel("⌚ " + "23" + " s");

@@ -14,16 +14,19 @@ import java.util.Comparator;
  * Class to Read and Save the HighScore
  */
 public class HighScoreFileDAO implements HighScoreDAO,Serializable {
-    private int maxHighScoreSize=10;
+
 
 
     /**
+     *
      * Function to save a new HighScore
      * First it checks if the HighScore is actually a Highscore  and then saves the list
      * @param playerScore an object of BusinessPlayerScore, which holds the name and score of a Player
+     *
      */
     @Override
     public void saveHighScore(BusinessPlayerScore playerScore) {
+        int maxHighScoreSize=10;
         //System.out.println("saveHigh DAO erreicht");
         ArrayList<BusinessPlayerScore> highScoreList = getHighScoreList();
 
@@ -56,11 +59,14 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
     }
 
 
+/*
 
-    /**
+    */
+/**
      * Function to pass a list of BusinessPlayersScore-Objects and Save them
      * @param theList List of BusniessPlayerScore objects [0] playername (String), [1]score (int)
      */
+
     public void justSaveHighScoreList(ArrayList<BusinessPlayerScore> theList){
         try {
             FileOutputStream fileOutput = new FileOutputStream("highScore.ser");
@@ -112,7 +118,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
      * @return sorted ArrayList of type BusinessPlayerScore
      */
     public ArrayList<BusinessPlayerScore> sortLowTopHighScoreList(ArrayList<BusinessPlayerScore> highScoreList){
-        BusinessPlayerScore temp;
+
         Collections.sort(highScoreList, new Comparator<BusinessPlayerScore>() {
             @Override
             public int compare(BusinessPlayerScore o1, BusinessPlayerScore o2) {
@@ -129,7 +135,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
      * @return sorted ArrayList of type BusinessPlayerScore
      */
     public ArrayList<BusinessPlayerScore> sortHighTopHighScoreList(ArrayList<BusinessPlayerScore> highScoreList){
-        BusinessPlayerScore temp;
+
         Collections.sort(highScoreList, new Comparator<BusinessPlayerScore>() {
             @Override
             public int compare(BusinessPlayerScore o1, BusinessPlayerScore o2) {

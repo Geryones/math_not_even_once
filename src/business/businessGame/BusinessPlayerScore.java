@@ -8,7 +8,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ *
  * Created by mai714 on 30.04.2015.
+ *
  */
 public class BusinessPlayerScore  implements Serializable {
 
@@ -70,17 +72,10 @@ public class BusinessPlayerScore  implements Serializable {
         return playerName;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
     public int getPlayerScore() {
         return playerScore;
     }
 
-    public void setPlayerScore(int playerScore) {
-        this.playerScore = playerScore;
-    }
 
 
 

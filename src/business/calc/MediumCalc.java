@@ -1,7 +1,9 @@
 package business.calc;
 
 /**
+ *
  * Created by mai714 on 02.03.2015.
+ *
  */
 public class MediumCalc extends AbstractCalc {
 
@@ -18,7 +20,7 @@ public class MediumCalc extends AbstractCalc {
         int numberTwo;
 
 
-        int operator = (int) Math.random()*4;
+        int operator = (int) (Math.random()*4);
 
         String calculation=null;
 
@@ -26,25 +28,25 @@ public class MediumCalc extends AbstractCalc {
             //Addition
             case 0:
                  numberTwo = (int) (Math.random()*1000)+1;
-                calculation=part+" + "+numberTwo;
+                calculation="("+part+") + "+numberTwo;
                 setResult(easycalc.getResult()+numberTwo);
                 break;
             //Subtraction
             case 1:
                 numberTwo=(int) (Math.random()*easycalc.getResult())+1;
-                calculation = part+" - "+numberTwo;
+                calculation = "("+part+") - "+numberTwo;
                 setResult(easycalc.getResult()-numberTwo);
                 break;
             //Division
             case 2:
                 setResult((int)(Math.random()*30)+1);
                 numberTwo = getResult()*easycalc.getResult();
-                calculation= part+" / "+numberTwo;
+                calculation=numberTwo+" / ("+part+")";
                 break;
             //Multiplication
             case 3:
                 numberTwo=(int)(Math.random()*19)+1;
-                calculation= part+" * "+numberTwo;
+                calculation= "("+part+") * "+numberTwo;
                 setResult(easycalc.getResult()*numberTwo);
                 break;
             default:

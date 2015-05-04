@@ -10,7 +10,7 @@ import javax.swing.*;
 public class HighscoreBar extends JPanel
 {
    /* int score = 0;
-    int highscore = 200; //TODO: set dynamically
+    int highscore = 200; //
     int progress;
 
     public HighscoreBar()  {

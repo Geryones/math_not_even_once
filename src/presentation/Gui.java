@@ -1,14 +1,12 @@
 package presentation;
 
 import business.businessGame.BusinessGame;
-import business.timer.TimerClass;
-
 import javax.swing.*;
 
-import java.util.*;
-
 /**
+ *
  * Created by simon on 06.04.15.
+ *
  */
 public class Gui  extends JFrame  {
 

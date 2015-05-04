@@ -29,7 +29,7 @@ public class TimerClass extends Observable {
 
         timer = new Timer();
         timer.scheduleAtFixedRate(new RemindTask(), 0, //initial delay
-                1*1000 ); //subsequent rate
+                1000 ); //subsequent rate
 
     }
 

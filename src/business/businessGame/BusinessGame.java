@@ -30,7 +30,6 @@ public class BusinessGame implements Serializable{
     }
 
 
-
     private int score;
     private int difficulty;
     private long remainingTime;
@@ -93,9 +92,7 @@ public class BusinessGame implements Serializable{
         return countSolvedCalculations;
     }
 
-    public void setCountSolvedCalculations(int countSolvedCalculations) {
-        this.countSolvedCalculations = countSolvedCalculations;
-    }
+
 
 
 }
