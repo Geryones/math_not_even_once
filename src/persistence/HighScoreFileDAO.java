@@ -90,9 +90,9 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
             FileInputStream fileInput = new FileInputStream("highScore.ser");
             //System.out.println("erste zeile getHighScoreList");
             ObjectInputStream objectInput = new ObjectInputStream(fileInput);
-           // System.out.println("zweite zeile getHighScoreList");
+            // System.out.println("zweite zeile getHighScoreList");
             scoreList = (ArrayList<BusinessPlayerScore>) objectInput.readObject();
-           // System.out.println("dritte zeile getHighScoreList");
+            // System.out.println("dritte zeile getHighScoreList");
             objectInput.close();
             fileInput.close();
            // System.out.println("volle liste in getHighScoreList erstellt");

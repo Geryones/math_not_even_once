@@ -107,7 +107,7 @@ public class GamePanel extends JPanel implements Observer {
 
         //Adding the timer to the Gui
         timerTeil = new TimerClass();
-        timerTeil.setTotalDuration(60);
+        timerTeil.setTotalDuration(2);
 
         timerTeil.addObserver(this);
 
@@ -149,7 +149,6 @@ public class GamePanel extends JPanel implements Observer {
 
     /**
      * Created by Jurij
-     *
      * @param difficulty determines the difficulty of the calculation
      */
     public void setCalc(int difficulty) {

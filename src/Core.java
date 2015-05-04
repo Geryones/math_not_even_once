@@ -25,7 +25,7 @@ public class Core {
         Hier habe ich manuell eine HighScore liste erstellt, da ich auf Probleme stiess beim laden der list, weiss noch nicht genau was es war,
         da nachdem ich diese einträge hinzugefügt habe, alles wieder funktioniert hat
          */
-      /*  PlayerScore one = new PlayerScore();
+     /* PlayerScore one = new PlayerScore();
         PlayerScore two = new PlayerScore();
 
         one.setPlayerName("Geryones");
@@ -48,12 +48,12 @@ public class Core {
         drei.setPlayerName("Fritz");
 
         BusinessPlayerScore pl3 = new BusinessPlayerScore(drei);
-        pl3.safePlayerScore()*/;
+        pl3.safePlayerScore();
+*/
 
 
 
-/*
-        int rechnung;
+      /*  int rechnung;
         Scanner scan = new Scanner(System.in);
         do {
             rechnung=((int) (Math.random() * 3));
@@ -61,7 +61,7 @@ public class Core {
             System.out.println(temp.createCalc());
             temp.correct(scan.nextInt());
 
-        }while (true);*/
-
+        }while (true);*//*
+*/
     }
 }

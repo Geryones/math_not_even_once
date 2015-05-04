@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 public class MenuPanel extends JPanel {
 
     JButton easy = new JButton("einfach");
-    JButton medium = new JButton("medium");
+    JButton medium = new JButton("mittel");
     JButton hard = new JButton("schwer");
     JButton load = new JButton("Laden");
     JButton exit = new JButton("Beenden");
@@ -78,6 +78,7 @@ public class MenuPanel extends JPanel {
         footer.add(exit);
         exit.addActionListener(cl);
         footer.add(highscore);
+        highscore.addActionListener(cl);
         footer.add(help);
         JLabel copyright = new JLabel("© 2015 Jurij Maïkoff, Simon Leber");
         copyright.setHorizontalAlignment(JLabel.RIGHT);
@@ -85,16 +86,34 @@ public class MenuPanel extends JPanel {
 
     }
 
+    /**
+     * created by Jurij
+     * Function to actualise the information about the saved game on the gamePanel
+     */
     public void actualiseSaveGame(){
+        String difficulty;
 
         newBusinessGame=businessGame.loadGame();
 
         if (newBusinessGame==null){
             savedGame.setText("Zurzeit kein gespeichertes Spiel");
         }else{
+            switch (newBusinessGame.getDifficulty()){
+                case 0:
+                    difficulty="einfach";
+                    break;
+                case 1:
+                    difficulty="mittel";
+                    break;
+                case 2:
+                    difficulty="hard";
+                    break;
+                default:
+                    difficulty="Problem?";
+            }
             savedGame.setText("<HTML>" +
                     "SpielerName: " + newBusinessGame.getPlayerName() + "<br>" +
-                    "Schwierigkeitsgrad: " + newBusinessGame.getDifficulty() + "<br>" +
+                    "Schwierigkeitsgrad: " + difficulty + "<br>" +
                     "Gelöste Rechnungen: " + newBusinessGame.getCountSolvedCalculations() + "<br>" +
                     "Score: " + newBusinessGame.getScore() + "<br>" +
                     "Verbleibende Zeit: " + newBusinessGame.getRemainingTime() +
@@ -116,6 +135,7 @@ public class MenuPanel extends JPanel {
             } else if (e.getSource() == exit) {
                 System.exit(0);
             } else if (e.getSource() == highscore) {
+                Gui.getInstance().showHighScore();
 
             } else if (e.getSource() == help) {
 

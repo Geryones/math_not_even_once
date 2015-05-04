@@ -15,7 +15,7 @@ public class Gui  extends JFrame  {
     private static Gui instance;
     GamePanel game;
     MenuPanel menu = new MenuPanel();
-
+    HighScorePanel highScorePanel;
 
 
 
@@ -41,6 +41,7 @@ public class Gui  extends JFrame  {
     public void showMenu() {
         endGame();
         if(game != null) remove(game);
+        if(highScorePanel!=null) remove(highScorePanel);
         menu.actualiseSaveGame();
         add(menu).setBounds(0, 0, 800, 600);
         repaint();
@@ -68,6 +69,13 @@ public class Gui  extends JFrame  {
         game.game.setCountSolvedCalculations(businessGame.getCountSolvedCalculations());
         game.game.setScore(businessGame.getScore());
         add(game).setBounds(0, 0, 800, 600);
+        repaint();
+    }
+
+    public void showHighScore() {
+        remove(menu);
+        highScorePanel= new HighScorePanel();
+        add(highScorePanel).setBounds(0, 0, 800, 600);
         repaint();
     }
 

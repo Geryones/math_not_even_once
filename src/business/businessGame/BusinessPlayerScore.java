@@ -27,6 +27,13 @@ public class BusinessPlayerScore  implements Serializable {
     }
 
     /**
+     * Empty Constructor to initialise an empty object
+     */
+    public BusinessPlayerScore(){
+
+    }
+
+    /**
      * Safes a BusinessPlayerScore
      */
     public void safePlayerScore(){
@@ -43,6 +50,15 @@ public class BusinessPlayerScore  implements Serializable {
     public ArrayList<BusinessPlayerScore> loadHighScore(){
         HighScoreDAO highScoreDAO = new HighScoreFileDAO();
         return highScoreDAO.getHighScoreList();
+    }
+
+    /**
+     * Loads and sorts a ArrayList containing the HighScores
+     * @return an ArrayList with the HighScore
+     */
+    public ArrayList<BusinessPlayerScore> sortHighScoreDesc(){
+        HighScoreFileDAO highScoreFileDAO = new HighScoreFileDAO();
+        return highScoreFileDAO.sortHighTopHighScoreList(loadHighScore());
     }
 
 
