@@ -40,9 +40,8 @@ public class Gui  extends JFrame  {
 
     public void showMenu() {
         endGame();
-        //TODO: we need some form of updating the menu panel, after i save a game and return to the menu, the old game is still there
-        //menu= new MenuPanel(); if do this, the saved game is being updated, but i loose the 3 buttons
         if(game != null) remove(game);
+        menu.actualiseSaveGame();
         add(menu).setBounds(0, 0, 800, 600);
         repaint();
     }

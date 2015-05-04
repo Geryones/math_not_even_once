@@ -25,13 +25,14 @@ public class MenuPanel extends JPanel {
     JButton help = new JButton("Hilfe");
     private JLabel savedGame=new JLabel();
     BusinessGame newBusinessGame;
+    BusinessGame businessGame = new BusinessGame();
 
 
     public MenuPanel() {
         setLayout(null);
 
         ClickListener cl = new ClickListener();
-        BusinessGame businessGame = new BusinessGame();
+
 
         JLabel title1 = new JLabel("Math");
         title1.setFont(new Font("SansSerif", Font.PLAIN, 80));
@@ -62,20 +63,7 @@ public class MenuPanel extends JPanel {
         loadGame.setHorizontalAlignment(JLabel.CENTER);
         add(loadGame).setBounds(400, 200, 400, 25);
 
-
-        newBusinessGame=businessGame.loadGame();
-
-        if (newBusinessGame==null){
-            savedGame.setText("Zurzeit kein gespeichertes Spiel");
-        }else{
-            savedGame.setText("<HTML>" +
-                    "SpielerName: " + newBusinessGame.getPlayerName() + "<br>" +
-                    "Schwierigkeitsgrad: " + newBusinessGame.getDifficulty() + "<br>" +
-                    "Gelöste Rechnungen: " + newBusinessGame.getCountSolvedCalculations() + "<br>" +
-                    "Score: " + newBusinessGame.getScore() + "<br>" +
-                    "Verbleibende Zeit: " + newBusinessGame.getRemainingTime() +
-                    "</HTML>");
-        }
+        actualiseSaveGame();
 
         add(savedGame).setBounds(500,250,300,80);
 
@@ -94,6 +82,24 @@ public class MenuPanel extends JPanel {
         JLabel copyright = new JLabel("© 2015 Jurij Maïkoff, Simon Leber");
         copyright.setHorizontalAlignment(JLabel.RIGHT);
         add(copyright).setBounds(400,560,380,40);
+
+    }
+
+    public void actualiseSaveGame(){
+
+        newBusinessGame=businessGame.loadGame();
+
+        if (newBusinessGame==null){
+            savedGame.setText("Zurzeit kein gespeichertes Spiel");
+        }else{
+            savedGame.setText("<HTML>" +
+                    "SpielerName: " + newBusinessGame.getPlayerName() + "<br>" +
+                    "Schwierigkeitsgrad: " + newBusinessGame.getDifficulty() + "<br>" +
+                    "Gelöste Rechnungen: " + newBusinessGame.getCountSolvedCalculations() + "<br>" +
+                    "Score: " + newBusinessGame.getScore() + "<br>" +
+                    "Verbleibende Zeit: " + newBusinessGame.getRemainingTime() +
+                    "</HTML>");
+        }
 
     }
 
