@@ -38,7 +38,6 @@ public class Sound {
         }
         catch(LineUnavailableException lua) {
             System.out.println(lua);
-
         }
     }
     /**
