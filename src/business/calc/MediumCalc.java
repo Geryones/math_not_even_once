@@ -1,11 +1,14 @@
 package business.calc;
 
+import business.notification.Sound;
+
 /**
  *
  * Created by mai714 on 02.03.2015.
  *
  */
 public class MediumCalc extends AbstractCalc {
+    Sound sound = new Sound();
 
     private int result;
 
@@ -68,9 +71,11 @@ public class MediumCalc extends AbstractCalc {
     @Override
     public boolean correct(int result) {
         if (result==getResult()){
+            sound.soundrichtig();
            return true;
         }
         else
+            sound.soundfalsch();
             return false;
 
     }

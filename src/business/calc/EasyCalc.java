@@ -1,9 +1,12 @@
 package business.calc;
 
+import business.notification.Sound;
+
 /**
  * Created by mai714 on 02.03.2015.
  */
 public class EasyCalc extends AbstractCalc {
+    Sound sound = new Sound();
 
     private int result;
 
@@ -38,8 +41,8 @@ public class EasyCalc extends AbstractCalc {
                 break;
             //Multiplication
             case 2:
-                numberOne = (int) (Math.random()*1000)+1;
-                numberTwo = (int) (Math.random()*10)+1;
+                numberOne = (int) (Math.random()*100)+1;
+                numberTwo = (int) (Math.random()*15)+2;
                 setResult(numberOne*numberTwo);
                 calculation=numberOne+" * "+numberTwo;
 
@@ -47,7 +50,7 @@ public class EasyCalc extends AbstractCalc {
             //Division
             case 3:
                 setResult(  (int) (Math.random()* 100)+1);
-                numberTwo = (int) (Math.random()*100)+1;
+                numberTwo = (int) (Math.random()*10)+3;
                 numberOne =  getResult()*numberTwo;
                 calculation=numberOne+" / "+numberTwo;
 
@@ -70,9 +73,11 @@ public class EasyCalc extends AbstractCalc {
      */
     public boolean correct(int result){
         if (result==getResult()){
+           sound.soundrichtig();
             return true;
         }
         else
+        sound.soundfalsch();
           return false;
     }
 

@@ -46,7 +46,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
 
 
         try {
-            FileOutputStream fileOutput = new FileOutputStream("highScore.ser");
+            FileOutputStream fileOutput = new FileOutputStream("src/resources/saveFiles/highScore.ser");
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 
             objectOutput.writeObject(highScoreList);
@@ -69,7 +69,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
 
     public void justSaveHighScoreList(ArrayList<BusinessPlayerScore> theList){
         try {
-            FileOutputStream fileOutput = new FileOutputStream("highScore.ser");
+            FileOutputStream fileOutput = new FileOutputStream("src/resources/saveFiles/highScore.ser");
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 
             objectOutput.writeObject(theList);
@@ -93,7 +93,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
 
         try {
             //System.out.println("try block in getHighScoreList");
-            FileInputStream fileInput = new FileInputStream("highScore.ser");
+            FileInputStream fileInput = new FileInputStream("src/resources/saveFiles/highScore.ser");
             //System.out.println("erste zeile getHighScoreList");
             ObjectInputStream objectInput = new ObjectInputStream(fileInput);
             // System.out.println("zweite zeile getHighScoreList");

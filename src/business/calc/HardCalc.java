@@ -1,10 +1,13 @@
 package business.calc;
 
+import business.notification.Sound;
+
 /**
  * Created by mai714 on 02.03.2015.
  */
 public class HardCalc extends AbstractCalc {
     private int result=0;
+    Sound sound = new Sound();
 
     /**
      * Creates an hard Calculation
@@ -139,9 +142,11 @@ public class HardCalc extends AbstractCalc {
     @Override
     public boolean correct(int result) {
         if (result==getResult()){
+            sound.soundrichtig();
            return true;
         }
         else
+        sound.soundfalsch();
            return false;
 
     }
