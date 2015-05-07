@@ -22,7 +22,6 @@ public class MediumCalc extends AbstractCalc {
         String part =easycalc.createCalc();
         int numberTwo;
 
-
         int operator = (int) (Math.random()*4);
 
         String calculation=null;
@@ -42,24 +41,20 @@ public class MediumCalc extends AbstractCalc {
                 break;
             //Division
             case 2:
-                setResult((int)(Math.random()*30)+1);
+                setResult((int)(Math.random()*30)+2);
                 numberTwo = getResult()*easycalc.getResult();
                 calculation=numberTwo+" / ("+part+")";
                 break;
             //Multiplication
             case 3:
-                numberTwo=(int)(Math.random()*19)+1;
+                numberTwo=(int)(Math.random()*19)+2;
                 calculation= "("+part+") * "+numberTwo;
                 setResult(easycalc.getResult()*numberTwo);
                 break;
             default:
                 System.out.println("Problem in MediumCalc");
                 break;
-
-
         }
-
-
         return calculation;
     }
 

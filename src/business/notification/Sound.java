@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * hier werden die sound dateien geladen
+ * Class which hosts the funktions to play sounds
  *
  * @author mai714
  *
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class Sound {
 
     /**
-     * Datei und Funktion um bei einem falschen Resultat einen charakteristischen sound abspielen zu k�nnen
+     * Function to play the sound for a wrong answer
      */
     public  void soundfalsch(){
 
@@ -40,8 +40,9 @@ public class Sound {
             System.out.println(lua);
         }
     }
+
     /**
-     *  Datei und Funktion um bei einem richtigen Resultat einen charakteristischen sound abspielen zu k�nnen
+     *  Function to play the sound for a correct answer
      */
     public  void soundrichtig(){
 
@@ -51,6 +52,31 @@ public class Sound {
                     new File("src/resources/sounds/jap.wav"));
             Clip clip = AudioSystem.getClip();
             clip.open(richtig);
+            clip.start();
+        }
+
+        catch(UnsupportedAudioFileException uae) {
+            System.out.println(uae);
+        }
+        catch(IOException ioe) {
+            System.out.println(ioe);
+        }
+        catch(LineUnavailableException lua) {
+            System.out.println(lua);
+        }
+    }
+
+    /**
+     *  Function to play the sound for a correct answer
+     */
+    public  void newHighScore(){
+
+
+        try {
+            AudioInputStream highScore = AudioSystem.getAudioInputStream(
+                    new File("src/resources/sounds/highscore.wav"));
+            Clip clip = AudioSystem.getClip();
+            clip.open(highScore);
             clip.start();
         }
 

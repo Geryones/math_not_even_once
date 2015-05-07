@@ -4,6 +4,7 @@ import business.businessGame.BusinessGame;
 import business.businessGame.BusinessPlayerScore;
 import business.calc.CalcFactory;
 import business.calc.InterfaceCalc;
+import business.notification.Sound;
 import business.timer.TimerClass;
 import game.Game;
 import game.PlayerScore;
@@ -38,6 +39,7 @@ public class GamePanel extends JPanel implements Observer {
     Game game = new Game();
     PlayerScore playerScore= new PlayerScore();
     BusinessGame businessGame;
+    Sound sound = new Sound();
 
 
 
@@ -168,6 +170,7 @@ public class GamePanel extends JPanel implements Observer {
      * Class to determine the behaviour of the OK-Button
      */
     public class Handler implements ActionListener{
+        boolean firstTime=true;
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -206,6 +209,10 @@ public class GamePanel extends JPanel implements Observer {
                     game.setScore(game.getScore() + (difficulty+1));
                     timerTeil.setTotalDuration(timerTeil.getTotalDuration() + 10*(1+difficulty));
                     highscoreBar.setHighScoreProgress(game.getScore());
+                    if (highscoreBar.getPercentage()==1&&firstTime){
+                        sound.newHighScore();
+                        firstTime=false;
+                    }
 
                     /*
                      if the user wants to safe, the boolean isSaving brings you here

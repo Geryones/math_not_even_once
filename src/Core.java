@@ -27,13 +27,13 @@ public class Core {
         Hier habe ich manuell eine HighScore liste erstellt, da ich auf Probleme stiess beim laden der list, weiss noch nicht genau was es war,
         da nachdem ich diese einträge hinzugefügt habe, alles wieder funktioniert hat
          */
-       /* PlayerScore one = new PlayerScore();
+       /*PlayerScore one = new PlayerScore();
         PlayerScore two = new PlayerScore();
 
         one.setPlayerName("Geryones");
         two.setPlayerName("Max");
-        one.setScore(50);
-        two.setScore(25);
+        one.setScore(2);
+        two.setScore(1);
 
         BusinessPlayerScore pl1 = new BusinessPlayerScore(one);
         BusinessPlayerScore pl2 = new BusinessPlayerScore(two);
@@ -46,7 +46,7 @@ public class Core {
         save.justSaveHighScoreList(list);
 
         PlayerScore drei = new PlayerScore();
-        drei.setScore(12);
+        drei.setScore(3);
         drei.setPlayerName("Fritz");
 
         BusinessPlayerScore pl3 = new BusinessPlayerScore(drei);

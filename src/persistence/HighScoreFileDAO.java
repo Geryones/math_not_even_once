@@ -30,7 +30,6 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
         //System.out.println("saveHigh DAO erreicht");
         ArrayList<BusinessPlayerScore> highScoreList = getHighScoreList();
 
-
         //if the score is higher than the lowest value, or there are less than 5 entries.
 
         if (isHighScore(playerScore.getPlayerScore()) && highScoreList.size() == maxHighScoreSize) {
@@ -43,7 +42,6 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
         } else if (highScoreList.size() < maxHighScoreSize) {
             highScoreList.add(playerScore);
         }
-
 
         try {
             FileOutputStream fileOutput = new FileOutputStream("src/resources/saveFiles/highScore.ser");
@@ -89,7 +87,6 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
     public ArrayList<BusinessPlayerScore> getHighScoreList() {
 
         ArrayList<BusinessPlayerScore> scoreList;
-
 
         try {
             //System.out.println("try block in getHighScoreList");

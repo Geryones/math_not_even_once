@@ -50,7 +50,7 @@ public class EasyCalc extends AbstractCalc {
             //Division
             case 3:
                 setResult(  (int) (Math.random()* 100)+1);
-                numberTwo = (int) (Math.random()*10)+3;
+                numberTwo = (int) (Math.random()*10)+2;
                 numberOne =  getResult()*numberTwo;
                 calculation=numberOne+" / "+numberTwo;
 
@@ -58,12 +58,6 @@ public class EasyCalc extends AbstractCalc {
             default:
                 System.out.println("Problem in EasyCalc-createCalc()");
         }
-
-
-
-
-
-
         return calculation;
     }
 
@@ -88,10 +82,4 @@ public class EasyCalc extends AbstractCalc {
     public void setResult(int result) {
         this.result = result;
     }
-
-
-
-
-
-
 }

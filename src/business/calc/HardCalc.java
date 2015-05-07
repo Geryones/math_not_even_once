@@ -20,7 +20,6 @@ public class HardCalc extends AbstractCalc {
         String partOne =easyPartOne.createCalc();
         int tempResultOne=easyPartOne.getResult();
 
-
         EasyCalc easyPartTwo = new EasyCalc();
         String partTwo = easyPartTwo.createCalc();
         int tempResultTwo = easyPartTwo.getResult();
@@ -46,7 +45,6 @@ public class HardCalc extends AbstractCalc {
                     calculation="("+partTwo+") - ("+partOne+")";
                     setResult((tempResultTwo-tempResultOne));
                 }
-
 
                 break;
             //Division
@@ -77,10 +75,6 @@ public class HardCalc extends AbstractCalc {
                 System.out.println("Problem in HardCalc");
                 break;
         }
-
-
-
-
         return calculation;
     }
 
@@ -127,10 +121,7 @@ public class HardCalc extends AbstractCalc {
             default:
                 System.out.println("Problem in HardCalc --> createTerm");
                 break;
-
         }
-
-
 
         return calculation;
     }

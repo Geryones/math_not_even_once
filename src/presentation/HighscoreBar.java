@@ -76,4 +76,8 @@ public class HighscoreBar extends JPanel
     public void setHighScoreProgress(int score){
         progressBar.setValue(score);
     }
+
+    public double getPercentage(){
+        return progressBar.getPercentComplete();
+    }
 }
