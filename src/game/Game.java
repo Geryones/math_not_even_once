@@ -8,7 +8,7 @@ package game;
  * Created by mai714 on 24.04.2015.
  *
  */
-public class Game{
+public class Game {
     private int score;
     private int difficulty;
     private long remainingTime;

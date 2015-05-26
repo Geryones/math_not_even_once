@@ -2,6 +2,7 @@ package persistence;
 
 
 import business.businessGame.BusinessPlayerScore;
+import game.PlayerScoreInterface;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -25,10 +26,10 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
      *
      */
     @Override
-    public void saveHighScore(BusinessPlayerScore playerScore) {
+    public void saveHighScore(PlayerScoreInterface playerScore) {
         int maxHighScoreSize=10;
         //System.out.println("saveHigh DAO erreicht");
-        ArrayList<BusinessPlayerScore> highScoreList = getHighScoreList();
+        ArrayList<PlayerScoreInterface> highScoreList = getHighScoreList();
 
         //if the score is higher than the lowest value, or there are less than 5 entries.
 
@@ -84,9 +85,9 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
      * @return ArrayList of Type BusinessPlayerScore which represents the HighScoreList
      */
     @Override
-    public ArrayList<BusinessPlayerScore> getHighScoreList() {
+    public ArrayList<PlayerScoreInterface> getHighScoreList() {
 
-        ArrayList<BusinessPlayerScore> scoreList;
+        ArrayList<PlayerScoreInterface> scoreList;
 
         try {
             //System.out.println("try block in getHighScoreList");
@@ -94,7 +95,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
             //System.out.println("erste zeile getHighScoreList");
             ObjectInputStream objectInput = new ObjectInputStream(fileInput);
             // System.out.println("zweite zeile getHighScoreList");
-            scoreList = (ArrayList<BusinessPlayerScore>) objectInput.readObject();
+            scoreList = (ArrayList<PlayerScoreInterface>) objectInput.readObject();
             // System.out.println("dritte zeile getHighScoreList");
             objectInput.close();
             fileInput.close();
@@ -114,11 +115,11 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
      * @param highScoreList The list, which should be sorted
      * @return sorted ArrayList of type BusinessPlayerScore
      */
-    public ArrayList<BusinessPlayerScore> sortLowTopHighScoreList(ArrayList<BusinessPlayerScore> highScoreList){
+    public ArrayList<PlayerScoreInterface> sortLowTopHighScoreList(ArrayList<PlayerScoreInterface> highScoreList){
 
-        Collections.sort(highScoreList, new Comparator<BusinessPlayerScore>() {
+        Collections.sort(highScoreList, new Comparator<PlayerScoreInterface>() {
             @Override
-            public int compare(BusinessPlayerScore o1, BusinessPlayerScore o2) {
+            public int compare(PlayerScoreInterface o1, PlayerScoreInterface o2) {
                 return o1.getPlayerScore()-o2.getPlayerScore();
             }
         });
@@ -131,11 +132,11 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
      * @param highScoreList The list, which should be sorted
      * @return sorted ArrayList of type BusinessPlayerScore
      */
-    public ArrayList<BusinessPlayerScore> sortHighTopHighScoreList(ArrayList<BusinessPlayerScore> highScoreList){
+    public ArrayList<PlayerScoreInterface> sortHighTopHighScoreList(ArrayList<PlayerScoreInterface> highScoreList){
 
-        Collections.sort(highScoreList, new Comparator<BusinessPlayerScore>() {
+        Collections.sort(highScoreList, new Comparator<PlayerScoreInterface>() {
             @Override
-            public int compare(BusinessPlayerScore o1, BusinessPlayerScore o2) {
+            public int compare(PlayerScoreInterface o1, PlayerScoreInterface o2) {
                 return o2.getPlayerScore()-o1.getPlayerScore();
             }
         });

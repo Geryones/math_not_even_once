@@ -1,6 +1,7 @@
 package business.businessGame;
 
 import game.PlayerScore;
+import game.PlayerScoreInterface;
 import persistence.HighScoreDAO;
 import persistence.HighScoreFileDAO;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * Created by mai714 on 30.04.2015.
  *
  */
-public class BusinessPlayerScore  implements Serializable {
+public class BusinessPlayerScore  implements Serializable, PlayerScoreInterface {
 
 
     private String playerName;
@@ -49,7 +50,7 @@ public class BusinessPlayerScore  implements Serializable {
      * Reads the file with the PlayerScores and creates a List--> the actual HighScore-List
      * @return ArrayList of the type BusinessPlayerScore which holds up to 10 BusinessPlayerScore-Objects
      */
-    public ArrayList<BusinessPlayerScore> loadHighScore(){
+    public ArrayList<PlayerScoreInterface> loadHighScore(){
         HighScoreDAO highScoreDAO = new HighScoreFileDAO();
         return highScoreDAO.getHighScoreList();
     }
@@ -58,7 +59,7 @@ public class BusinessPlayerScore  implements Serializable {
      * Loads and sorts a ArrayList containing the HighScores
      * @return an ArrayList with the HighScore
      */
-    public ArrayList<BusinessPlayerScore> sortHighScoreDesc(){
+    public ArrayList<PlayerScoreInterface> sortHighScoreDesc(){
         HighScoreFileDAO highScoreFileDAO = new HighScoreFileDAO();
         return highScoreFileDAO.sortHighTopHighScoreList(loadHighScore());
     }
@@ -70,6 +71,21 @@ public class BusinessPlayerScore  implements Serializable {
 
     public String getPlayerName() {
         return playerName;
+    }
+
+    @Override
+    public void setPlayerName(String playerName) {
+        this.playerName=playerName;
+    }
+
+    @Override
+    public int getScore() {
+        return playerScore;
+    }
+
+    @Override
+    public void setScore(int score) {
+        this.playerScore=score;
     }
 
     public int getPlayerScore() {

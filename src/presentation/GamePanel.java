@@ -6,6 +6,7 @@ import business.calc.CalcFactory;
 import business.calc.InterfaceCalc;
 import business.notification.Sound;
 import business.timer.TimerClass;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import game.Game;
 import game.PlayerScore;
 
@@ -174,72 +175,74 @@ public class GamePanel extends JPanel implements Observer {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            try {
             /*
             If the the cursor is in the resultInput and you hit Enter
             clickinig the OK-button
              */
-            if(e.getSource()==ok|| e.getSource()==resultInput) {
+                if (e.getSource() == ok || e.getSource() == resultInput) {
 
 
-                // Do nothing if there is nothing in the resultInput
-                if(resultInput.getText().equals("")){
+                    // Do nothing if there is nothing in the resultInput
+                    if (resultInput.getText().equals("")) {
 
                     /*
                     If the time is 0, and the user is not Saving, come here
                      */
-                }else if (timerTeil.getRemainingTime() == 0 && !isSaving) {
+                    } else if (timerTeil.getRemainingTime() == 0 && !isSaving) {
 
 
-                    playerScore.setPlayerName(resultInput.getText());
-                    playerScore.setScore(game.getScore());
-                    BusinessPlayerScore businessPlayerScore = new BusinessPlayerScore(playerScore);
-                    businessPlayerScore.safePlayerScore();
-                    Gui.getInstance().showMenu();
+                        playerScore.setPlayerName(resultInput.getText());
+                        playerScore.setScore(game.getScore());
+                        BusinessPlayerScore businessPlayerScore = new BusinessPlayerScore(playerScore);
+                        businessPlayerScore.safePlayerScore();
+                        Gui.getInstance().showMenu();
 
                     /*
                     If the user is not saving and the entered Number is correct
                     maybe errors if you enter a string which is not numbers only
                      */
-                } else if ( !isSaving && calcInterface.correct(Integer.parseInt(resultInput.getText())) ) {
+                    } else if (!isSaving && calcInterface.correct(Integer.parseInt(resultInput.getText()))) {
 
 
-                    setCalc(getDifficulty());
-                    resultInput.setText(null);
-                    game.setCountSolvedCalculations(game.getCountSolvedCalculations() + 1);
-                    game.setScore(game.getScore() + (difficulty+1));
-                    timerTeil.setTotalDuration(timerTeil.getTotalDuration() + 10*(1+difficulty));
-                    highscoreBar.setHighScoreProgress(game.getScore());
-                    if (highscoreBar.getPercentage()==1&&firstTime){
-                        sound.newHighScore();
-                        firstTime=false;
-                    }
+                        setCalc(getDifficulty());
+                        resultInput.setText(null);
+                        game.setCountSolvedCalculations(game.getCountSolvedCalculations() + 1);
+                        game.setScore(game.getScore() + (difficulty + 1));
+                        timerTeil.setTotalDuration(timerTeil.getTotalDuration() + 10 * (1 + difficulty));
+                        highscoreBar.setHighScoreProgress(game.getScore());
+                        if (highscoreBar.getPercentage() == 1 && firstTime) {
+                            sound.newHighScore();
+                            firstTime = false;
+                        }
 
                     /*
                      if the user wants to safe, the boolean isSaving brings you here
                       All the necessary Information is transfered and saved
                      */
-                }else if(isSaving){
+                    } else if (isSaving) {
 
-                    game.setPlayerName(resultInput.getText());
-                    businessGame=new BusinessGame(game);
-                    businessGame.safeGame();
-                    Gui.getInstance().showMenu();
+                        game.setPlayerName(resultInput.getText());
+                        businessGame = new BusinessGame(game);
+                        businessGame.safeGame();
+                        Gui.getInstance().showMenu();
 
 
-                }
+                    }
             /*
             if you hit the save button midgame
             the timer gets canceld
              */
-            }else if(e.getSource().equals(save)){
-                game.setRemainingTime(timerTeil.getRemainingTime());
-                timerTeil.setIsRunning(false);
-                isSaving=true;
-                prepareTheEnd();
+                } else if (e.getSource().equals(save)) {
+                    game.setRemainingTime(timerTeil.getRemainingTime());
+                    timerTeil.setIsRunning(false);
+                    isSaving = true;
+                    prepareTheEnd();
 
 
-
-
+                }
+            }catch (Exception E ){
+                System.out.println("mabe problem");
             }
 
 

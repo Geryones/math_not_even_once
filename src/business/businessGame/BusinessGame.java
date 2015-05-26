@@ -1,6 +1,7 @@
 package business.businessGame;
 
 import game.Game;
+import game.GameInterface;
 import persistence.SavedGameFileDAO;
 
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.io.Serializable;
  * this way, the gui creates a object from the bussiness layer and there is lies the object for SavedGameFileDAO
  * Created by mai714 on 24.04.2015.
  */
-public class BusinessGame implements Serializable{
+public class BusinessGame implements Serializable, GameInterface{
     SavedGameFileDAO saveGameDAO = new SavedGameFileDAO();
 
     public BusinessGame(Game game) {
@@ -49,7 +50,7 @@ public class BusinessGame implements Serializable{
      * Function create a BussinessGame object from a file
      * @return BussinessGame-Object
      */
-    public BusinessGame loadGame(){
+    public GameInterface loadGame(){
         //System.out.println("im BusinessGame angekommen");
 
         return saveGameDAO.loadGame();
@@ -92,7 +93,10 @@ public class BusinessGame implements Serializable{
         return countSolvedCalculations;
     }
 
-
+    @Override
+    public void setCountSolvedCalculations(int countSolvedCalculations) {
+        this.countSolvedCalculations=countSolvedCalculations;
+    }
 
 
 }

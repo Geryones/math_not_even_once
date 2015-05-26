@@ -93,7 +93,7 @@ public class MenuPanel extends JPanel {
     public void actualiseSaveGame(){
         String difficulty;
 
-        newBusinessGame=businessGame.loadGame();
+        newBusinessGame= (BusinessGame) businessGame.loadGame();
 
         if (newBusinessGame==null){
             savedGame.setText("Zurzeit kein gespeichertes Spiel");

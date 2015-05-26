@@ -30,7 +30,7 @@ public class HardCalc extends AbstractCalc {
             //Addition
             case 0:
                 calculation="("+partOne+") + ("+partTwo+")";
-                setResult(tempResultOne+tempResultTwo);
+                result=(tempResultOne+tempResultTwo);
 
                 break;
             //Subtraction
@@ -39,28 +39,28 @@ public class HardCalc extends AbstractCalc {
                     System.out.println(tempResultOne+" = erster term");
                     System.out.println(tempResultTwo+" = zweiter term");
                     calculation="("+partOne+") - ("+partTwo+")";
-                    setResult((tempResultOne-tempResultTwo));
+                    result=(tempResultOne-tempResultTwo);
                     System.out.println(getResult()+" gesammt");
                 }else{
                     calculation="("+partTwo+") - ("+partOne+")";
-                    setResult((tempResultTwo-tempResultOne));
+                    result=((tempResultTwo-tempResultOne));
                 }
 
                 break;
             //Division
             case 2:
-                setResult((int)(Math.random()*100)+1);
-                System.out.println("Resultat = "+getResult());
+                result=((int)(Math.random()*100)+1);
+                //System.out.println("Resultat = "+getResult());
                 int multiplier=(int)(Math.random()*100)+1;
-                System.out.println("Multiplier = "+multiplier);
+                //System.out.println("Multiplier = "+multiplier);
                 partTwo=createTerm(getResult());
-                System.out.println("part2 mit Resultat: "+getResult()+" als parameter wird erstellt");
-                System.out.println("part2 = "+partTwo);
+                //System.out.println("part2 mit Resultat: "+getResult()+" als parameter wird erstellt");
+               // System.out.println("part2 = "+partTwo);
                 partOne=createTerm((getResult()* multiplier));
-                System.out.println("part1 mit Resultat * Multiplier: "+getResult()+" und "+multiplier+" als parameter wird erstellt");
-                System.out.println("part1 = "+ partOne);
-                setResult(multiplier);
-                System.out.println("entgültiges Resultat wird gesetzt "+getResult());
+               // System.out.println("part1 mit Resultat * Multiplier: "+getResult()+" und "+multiplier+" als parameter wird erstellt");
+                //System.out.println("part1 = "+ partOne);
+                result=(multiplier);
+                //System.out.println("entgültiges Resultat wird gesetzt "+getResult());
                 calculation=partOne+" / "+partTwo;
 
 
@@ -68,7 +68,7 @@ public class HardCalc extends AbstractCalc {
             //Muliplication
             case 3:
                 calculation= "("+partOne+") * ("+partTwo+")";
-                setResult(tempResultOne*tempResultTwo);
+                result=(tempResultOne*tempResultTwo);
 
                 break;
             default:
@@ -146,7 +146,5 @@ public class HardCalc extends AbstractCalc {
         return result;
     }
 
-    public void setResult(int result) {
-        this.result = result;
-    }
+
 }

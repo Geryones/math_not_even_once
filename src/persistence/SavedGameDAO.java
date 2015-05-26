@@ -1,6 +1,8 @@
 package persistence;
 
 import business.businessGame.BusinessGame;
+import game.Game;
+import game.GameInterface;
 
 /**
  *
@@ -8,8 +10,8 @@ import business.businessGame.BusinessGame;
  *
  */
 public interface SavedGameDAO {
-    public void saveGame(BusinessGame game);
-    public BusinessGame loadGame();
+    public void saveGame(GameInterface game);
+    public GameInterface loadGame();
 
 
 }

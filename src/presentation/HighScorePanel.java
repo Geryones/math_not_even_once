@@ -1,6 +1,7 @@
 package presentation;
 
 import business.businessGame.BusinessPlayerScore;
+import game.PlayerScoreInterface;
 
 
 import javax.swing.*;
@@ -32,7 +33,7 @@ public class HighScorePanel extends JPanel {
         setLayout(null);
 
         businessPlayerScore = new BusinessPlayerScore();
-        ArrayList<BusinessPlayerScore> highScoreList=businessPlayerScore.sortHighScoreDesc();
+        ArrayList<PlayerScoreInterface> highScoreList=businessPlayerScore.sortHighScoreDesc();
 
         for (int i =0;i<highScoreList.size();i++){
             labelArrayList.add(new JLabel());

@@ -27,7 +27,7 @@ public class EasyCalc extends AbstractCalc {
             case 0:
                 numberOne = (int) (Math.random()*1000)+1;
                 numberTwo = (int) (Math.random()*1000)+1;
-                setResult(numberOne+numberTwo);
+                result=(numberOne+numberTwo);
                 calculation=numberOne+" + "+numberTwo;
 
                 break;
@@ -35,7 +35,7 @@ public class EasyCalc extends AbstractCalc {
             case 1:
                 numberOne = (int) (Math.random()*1000)+1;
                 numberTwo = (int) (Math.random()*numberOne)+1;
-                setResult(numberOne-numberTwo);
+                result=(numberOne-numberTwo);
                 calculation=numberOne+" - "+numberTwo;
 
                 break;
@@ -43,13 +43,13 @@ public class EasyCalc extends AbstractCalc {
             case 2:
                 numberOne = (int) (Math.random()*100)+1;
                 numberTwo = (int) (Math.random()*15)+2;
-                setResult(numberOne*numberTwo);
+                result=(numberOne*numberTwo);
                 calculation=numberOne+" * "+numberTwo;
 
                 break;
             //Division
             case 3:
-                setResult(  (int) (Math.random()* 100)+1);
+                result=(  (int) (Math.random()* 100)+1);
                 numberTwo = (int) (Math.random()*10)+2;
                 numberOne =  getResult()*numberTwo;
                 calculation=numberOne+" / "+numberTwo;
@@ -79,7 +79,5 @@ public class EasyCalc extends AbstractCalc {
         return result;
     }
 
-    public void setResult(int result) {
-        this.result = result;
-    }
+
 }

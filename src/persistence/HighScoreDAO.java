@@ -1,6 +1,7 @@
 package persistence;
 
-import business.businessGame.BusinessPlayerScore;
+
+import game.PlayerScoreInterface;
 
 
 import java.util.ArrayList;
@@ -11,6 +12,6 @@ import java.util.ArrayList;
  *
  */
 public interface HighScoreDAO {
-    public void saveHighScore(BusinessPlayerScore playerScore);
-    public ArrayList<BusinessPlayerScore> getHighScoreList() ;
+    public void saveHighScore(PlayerScoreInterface playerScore);
+    public ArrayList<PlayerScoreInterface> getHighScoreList() ;
 }

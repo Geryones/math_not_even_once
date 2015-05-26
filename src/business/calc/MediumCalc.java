@@ -31,17 +31,17 @@ public class MediumCalc extends AbstractCalc {
             case 0:
                  numberTwo = (int) (Math.random()*1000)+1;
                 calculation="("+part+") + "+numberTwo;
-                setResult(easycalc.getResult()+numberTwo);
+                result=(easycalc.getResult()+numberTwo);
                 break;
             //Subtraction
             case 1:
                 numberTwo=(int) (Math.random()*easycalc.getResult())+1;
                 calculation = "("+part+") - "+numberTwo;
-                setResult(easycalc.getResult()-numberTwo);
+                result=(easycalc.getResult()-numberTwo);
                 break;
             //Division
             case 2:
-                setResult((int)(Math.random()*30)+2);
+                result=((int)(Math.random()*30)+2);
                 numberTwo = getResult()*easycalc.getResult();
                 calculation=numberTwo+" / ("+part+")";
                 break;
@@ -49,7 +49,7 @@ public class MediumCalc extends AbstractCalc {
             case 3:
                 numberTwo=(int)(Math.random()*19)+2;
                 calculation= "("+part+") * "+numberTwo;
-                setResult(easycalc.getResult()*numberTwo);
+                result=(easycalc.getResult()*numberTwo);
                 break;
             default:
                 System.out.println("Problem in MediumCalc");
@@ -79,7 +79,5 @@ public class MediumCalc extends AbstractCalc {
         return result;
     }
 
-    public void setResult(int result) {
-        this.result = result;
-    }
+
 }
