@@ -1,6 +1,6 @@
 package business.businessGame;
 
-import game.PlayerScore;
+
 import game.PlayerScoreInterface;
 import persistence.HighScoreDAO;
 import persistence.HighScoreFileDAO;
@@ -23,7 +23,7 @@ public class BusinessPlayerScore  implements Serializable, PlayerScoreInterface 
      * Constructor for a BusinessPlayerScore
      * @param thePlayerScore the object of a PlayerScore
      */
-    public BusinessPlayerScore(PlayerScore thePlayerScore){
+    public BusinessPlayerScore(BusinessPlayerScore thePlayerScore){
         this.playerName=thePlayerScore.getPlayerName();
         this.playerScore=thePlayerScore.getScore();
         //System.out.println("constructor fertig");
@@ -90,6 +90,41 @@ public class BusinessPlayerScore  implements Serializable, PlayerScoreInterface 
 
     public int getPlayerScore() {
         return playerScore;
+    }
+
+
+    /**
+     * Function to create a dummy HighScore
+     * if any of the code which has a connection with the creation of the highScore.ser file is altert,
+     * there are errors because of some id.
+     * so after the code is alter, the HighScore.ser file has to be rewritten.
+     *
+     */
+    public void createDummyHighScore(){
+        BusinessPlayerScore one = new  BusinessPlayerScore();
+        BusinessPlayerScore two = new  BusinessPlayerScore();
+
+        one.setPlayerName("Geryones");
+        two.setPlayerName("Max");
+        one.setScore(2);
+        two.setScore(1);
+
+        BusinessPlayerScore pl1 = new BusinessPlayerScore(one);
+        BusinessPlayerScore pl2 = new BusinessPlayerScore(two);
+
+        ArrayList<BusinessPlayerScore> list=new ArrayList<BusinessPlayerScore>();
+        list.add(pl1);
+        list.add(pl2);
+
+        HighScoreFileDAO save = new HighScoreFileDAO();
+        save.justSaveHighScoreList(list);
+
+        BusinessPlayerScore drei = new  BusinessPlayerScore();
+        drei.setScore(3);
+        drei.setPlayerName("Fritz");
+
+        BusinessPlayerScore pl3 = new BusinessPlayerScore(drei);
+        pl3.safePlayerScore();
     }
 
 

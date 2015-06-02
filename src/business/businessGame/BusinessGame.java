@@ -1,9 +1,7 @@
 package business.businessGame;
 
-import game.Game;
 import game.GameInterface;
 import persistence.SavedGameFileDAO;
-
 import java.io.Serializable;
 
 /**
@@ -14,7 +12,7 @@ import java.io.Serializable;
 public class BusinessGame implements Serializable, GameInterface{
     SavedGameFileDAO saveGameDAO = new SavedGameFileDAO();
 
-    public BusinessGame(Game game) {
+    public BusinessGame(BusinessGame game) {
         this.score=game.getScore();
         this.difficulty=game.getDifficulty();
         this.remainingTime=game.getRemainingTime();

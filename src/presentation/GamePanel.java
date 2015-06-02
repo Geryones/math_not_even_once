@@ -6,9 +6,7 @@ import business.calc.CalcFactory;
 import business.calc.InterfaceCalc;
 import business.notification.Sound;
 import business.timer.TimerClass;
-import com.sun.org.apache.xpath.internal.SourceTree;
-import game.Game;
-import game.PlayerScore;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,8 +35,8 @@ public class GamePanel extends JPanel implements Observer {
     InterfaceCalc calcInterface;
     Handler theHandler = new Handler();
     TimerClass timerTeil;
-    Game game = new Game();
-    PlayerScore playerScore= new PlayerScore();
+    BusinessGame game = new BusinessGame();
+    BusinessPlayerScore playerScore= new BusinessPlayerScore();
     BusinessGame businessGame;
     Sound sound = new Sound();
 
@@ -242,7 +240,7 @@ public class GamePanel extends JPanel implements Observer {
 
                 }
             }catch (Exception E ){
-                System.out.println("mabe problem");
+                System.out.println("maybe problem");
             }
 
 
