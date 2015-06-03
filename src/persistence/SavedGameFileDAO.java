@@ -30,8 +30,8 @@ public class SavedGameFileDAO implements SavedGameDAO,Serializable {
           //  System.out.println("sollte gespeichert sein");
 
         }catch (Exception e){
-          //  System.out.println("fehler");
-            e.printStackTrace();
+           System.out.println("SavedGameFileDAO: There was en error while saving the game");
+
         }
 
 
