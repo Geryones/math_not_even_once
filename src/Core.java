@@ -1,9 +1,7 @@
 
 import business.businessGame.BusinessPlayerScore;
-
 import persistence.HighScoreFileDAO;
 import presentation.Gui;
-
 import java.util.ArrayList;
 
 
@@ -20,8 +18,8 @@ public class Core {
         Gui.getInstance();
 
 
-       //BusinessPlayerScore tada = new BusinessPlayerScore();
-        //tada.createDummyHighScore();
+      /* BusinessPlayerScore tada = new BusinessPlayerScore();
+        tada.createDummyHighScore();*/
 
 
 

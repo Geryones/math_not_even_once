@@ -75,7 +75,13 @@ public class BusinessPlayerScore  implements Serializable, PlayerScoreInterface 
     }
 
     public int getTheHighScore(){
-        return sortHighScoreDesc().get(0).getPlayerScore();
+        try {
+            return sortHighScoreDesc().get(0).getPlayerScore();
+        }catch (Exception e){
+            System.out.println("BusinessPlayerScore: Failed to get HighScore for References in ProgressBar");
+            return 1;
+        }
+
     }
 
 
