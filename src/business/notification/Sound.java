@@ -12,14 +12,13 @@ import java.io.IOException;
  * Class which hosts the funktions to play sounds
  *
  * @author mai714
- *
  */
 public class Sound {
 
     /**
      * Function to play the sound for a wrong answer
      */
-    public  void soundfalsch(){
+    public void soundfalsch() {
 
 
         try {
@@ -28,23 +27,19 @@ public class Sound {
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.start();
-        }
-
-        catch(UnsupportedAudioFileException uae) {
+        } catch (UnsupportedAudioFileException uae) {
             System.out.println(uae);
-        }
-        catch(IOException ioe) {
+        } catch (IOException ioe) {
             System.out.println(ioe);
-        }
-        catch(LineUnavailableException lua) {
+        } catch (LineUnavailableException lua) {
             System.out.println(lua);
         }
     }
 
     /**
-     *  Function to play the sound for a correct answer
+     * Function to play the sound for a correct answer
      */
-    public  void soundrichtig(){
+    public void soundrichtig() {
 
 
         try {
@@ -53,23 +48,19 @@ public class Sound {
             Clip clip = AudioSystem.getClip();
             clip.open(richtig);
             clip.start();
-        }
-
-        catch(UnsupportedAudioFileException uae) {
+        } catch (UnsupportedAudioFileException uae) {
             System.out.println(uae);
-        }
-        catch(IOException ioe) {
+        } catch (IOException ioe) {
             System.out.println(ioe);
-        }
-        catch(LineUnavailableException lua) {
+        } catch (LineUnavailableException lua) {
             System.out.println(lua);
         }
     }
 
     /**
-     *  Function to play the sound for a correct answer
+     * Function to play the sound for a correct answer
      */
-    public  void newHighScore(){
+    public void newHighScore() {
 
 
         try {
@@ -78,15 +69,11 @@ public class Sound {
             Clip clip = AudioSystem.getClip();
             clip.open(highScore);
             clip.start();
-        }
-
-        catch(UnsupportedAudioFileException uae) {
+        } catch (UnsupportedAudioFileException uae) {
             System.out.println(uae);
-        }
-        catch(IOException ioe) {
+        } catch (IOException ioe) {
             System.out.println(ioe);
-        }
-        catch(LineUnavailableException lua) {
+        } catch (LineUnavailableException lua) {
             System.out.println(lua);
         }
     }

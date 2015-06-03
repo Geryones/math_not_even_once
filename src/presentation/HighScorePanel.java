@@ -3,7 +3,6 @@ package presentation;
 import business.businessGame.BusinessPlayerScore;
 import game.PlayerScoreInterface;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,25 +10,22 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- *
  * Created by mai714 on 04.05.2015.
  * Panel where u can see the whole HighScore-List
- *
  */
 public class HighScorePanel extends JPanel {
 
     BusinessPlayerScore businessPlayerScore;
 
 
-
-   ArrayList<JLabel> labelArrayList = new ArrayList<JLabel>();
+    ArrayList<JLabel> labelArrayList = new ArrayList<JLabel>();
 
 
     /**
      * Constructor, 10 JLabel's are created and filled with PlayerName and the Score
      */
-    public HighScorePanel(){
-     JButton menu = new JButton("Menü");
+    public HighScorePanel() {
+        JButton menu = new JButton("Menü");
         setLayout(null);
 
         businessPlayerScore = new BusinessPlayerScore();
@@ -43,7 +39,7 @@ public class HighScorePanel extends JPanel {
                 labelArrayList.get(i).setFont(new Font("SansSerif", Font.BOLD, 25));
                 add(labelArrayList.get(i));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Panel: no HighScore, nothing to show");
         }
 
@@ -60,7 +56,6 @@ public class HighScorePanel extends JPanel {
         add(menu);
 
         requestFocusInWindow();
-
 
 
     }

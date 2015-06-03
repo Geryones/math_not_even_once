@@ -1,14 +1,12 @@
 package presentation;
 
 
-
 import business.businessGame.BusinessPlayerScore;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
-public class HighscoreBar extends JPanel
-{
+public class HighscoreBar extends JPanel {
    /* int score = 0;
     int highscore = 200; //
     int progress;
@@ -58,26 +56,26 @@ public class HighscoreBar extends JPanel
     /**
      * Constructor to initialise a progressBar
      */
-    public HighscoreBar(){
+    public HighscoreBar() {
         setLayout(null);
-        if (businessPlayerScore==null){
-            progressBar= new JProgressBar(0,0);
-        }else {
+        if (businessPlayerScore == null) {
+            progressBar = new JProgressBar(0, 0);
+        } else {
             progressBar = new JProgressBar(0, businessPlayerScore.getTheHighScore());
         }
         progressBar.setValue(0);
         progressBar.setStringPainted(true);
         progressBar.setBackground(Color.black);
-        add(progressBar).setBounds(0,0,700,50);
+        add(progressBar).setBounds(0, 0, 700, 50);
 
 
     }
 
-    public void setHighScoreProgress(int score){
+    public void setHighScoreProgress(int score) {
         progressBar.setValue(score);
     }
 
-    public double getPercentage(){
+    public double getPercentage() {
         return progressBar.getPercentComplete();
     }
 }

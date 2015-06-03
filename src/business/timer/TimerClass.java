@@ -15,9 +15,9 @@ public class TimerClass extends Observable {
 
     Timer timer;
     private long passedTime;
-    private long remainingTime=1;
-    private long totalDuration=0;
-    private boolean isRunning=true;
+    private long remainingTime = 1;
+    private long totalDuration = 0;
+    private boolean isRunning = true;
 
     /**
      * Constructer
@@ -26,10 +26,9 @@ public class TimerClass extends Observable {
     public TimerClass() {
 
 
-
         timer = new Timer();
         timer.scheduleAtFixedRate(new RemindTask(), 0, //initial delay
-                1000 ); //subsequent rate
+                1000); //subsequent rate
 
     }
 
@@ -62,7 +61,7 @@ public class TimerClass extends Observable {
      */
     class RemindTask extends TimerTask {
         //int numWarningBeeps = 10;
-        long startTime=System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
 
         /**
          * seperated Thread
@@ -72,13 +71,13 @@ public class TimerClass extends Observable {
 
 
             if (System.currentTimeMillis() - startTime < (getTotalDuration() * 1000)) {
-                    setPassedTime(System.currentTimeMillis() - startTime);
-                    setRemainingTime(getTotalDuration() - (getPassedTime() / 1000));
-                    setChanged();
-                    notifyObservers(getRemainingTime());
+                setPassedTime(System.currentTimeMillis() - startTime);
+                setRemainingTime(getTotalDuration() - (getPassedTime() / 1000));
+                setChanged();
+                notifyObservers(getRemainingTime());
 
 
-            } else if(isRunning)  {
+            } else if (isRunning) {
                 setChanged();
                 notifyObservers(0);
                 setRemainingTime(0);
@@ -91,7 +90,7 @@ public class TimerClass extends Observable {
             With this condition i can cancel a thread
             for example if i save a game and want to return to the menu
              */
-            if(!isRunning){
+            if (!isRunning) {
                 timer.cancel();
             }
 
@@ -99,12 +98,10 @@ public class TimerClass extends Observable {
         }
 
 
-
-
     }
 
-    public void setIsRunning(Boolean isRunning){
-        this.isRunning=isRunning;
+    public void setIsRunning(Boolean isRunning) {
+        this.isRunning = isRunning;
     }
 
 

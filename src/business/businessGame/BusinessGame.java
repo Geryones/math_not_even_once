@@ -2,30 +2,30 @@ package business.businessGame;
 
 import game.GameInterface;
 import persistence.SavedGameFileDAO;
+
 import java.io.Serializable;
-import java.util.concurrent.ExecutionException;
 
 /**
  * This class is created to prevent a violation of the layer-Access
  * this way, the gui creates a object from the bussiness layer and there is lies the object for SavedGameFileDAO
  * Created by mai714 on 24.04.2015.
  */
-public class BusinessGame implements Serializable, GameInterface{
+public class BusinessGame implements Serializable, GameInterface {
     SavedGameFileDAO saveGameDAO = new SavedGameFileDAO();
 
     public BusinessGame(BusinessGame game) {
-        this.score=game.getScore();
-        this.difficulty=game.getDifficulty();
-        this.remainingTime=game.getRemainingTime();
-        this.playerName=game.getPlayerName();
-        this.countSolvedCalculations=game.getCountSolvedCalculations();
-       // System.out.println("businessGame wurde erstellt");
+        this.score = game.getScore();
+        this.difficulty = game.getDifficulty();
+        this.remainingTime = game.getRemainingTime();
+        this.playerName = game.getPlayerName();
+        this.countSolvedCalculations = game.getCountSolvedCalculations();
+        // System.out.println("businessGame wurde erstellt");
     }
 
     /**
      * empty Constructor which allows you to create an BussinessGame-Object without all the information
      */
-    public BusinessGame(){
+    public BusinessGame() {
 
     }
 
@@ -39,7 +39,7 @@ public class BusinessGame implements Serializable, GameInterface{
     /**
      * Function to safe this GameObject into a file
      */
-    public void safeGame(){
+    public void safeGame() {
 
         saveGameDAO.saveGame(this);
 
@@ -47,15 +47,16 @@ public class BusinessGame implements Serializable, GameInterface{
 
     /**
      * Function create a BussinessGame object from a file
+     *
      * @return BussinessGame-Object
      */
-    public GameInterface loadGame(){
-       try{
-           return saveGameDAO.loadGame();
-       }catch (Exception e){
-           System.out.println("BusinessGame: Failed to load game");
-           return null;
-       }
+    public GameInterface loadGame() {
+        try {
+            return saveGameDAO.loadGame();
+        } catch (Exception e) {
+            System.out.println("BusinessGame: Failed to load game");
+            return null;
+        }
 
 
     }
@@ -99,7 +100,7 @@ public class BusinessGame implements Serializable, GameInterface{
 
     @Override
     public void setCountSolvedCalculations(int countSolvedCalculations) {
-        this.countSolvedCalculations=countSolvedCalculations;
+        this.countSolvedCalculations = countSolvedCalculations;
     }
 
 

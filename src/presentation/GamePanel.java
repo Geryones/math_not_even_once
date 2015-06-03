@@ -7,7 +7,6 @@ import business.calc.InterfaceCalc;
 import business.notification.Sound;
 import business.timer.TimerClass;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +16,6 @@ import java.util.Observer;
 
 /**
  * Created by simon on 12.04.15.
- *
  */
 public class GamePanel extends JPanel implements Observer {
 
@@ -27,19 +25,18 @@ public class GamePanel extends JPanel implements Observer {
 
     private JLabel timer;
     private JButton ok;
-    private  JButton save = new JButton("Speichern");
-    private boolean isSaving=false;
+    private JButton save = new JButton("Speichern");
+    private boolean isSaving = false;
 
 
-     //von Jurij
+    //von Jurij
     InterfaceCalc calcInterface;
     Handler theHandler = new Handler();
     TimerClass timerTeil;
     BusinessGame game = new BusinessGame();
-    BusinessPlayerScore playerScore= new BusinessPlayerScore();
+    BusinessPlayerScore playerScore = new BusinessPlayerScore();
     BusinessGame businessGame;
     Sound sound = new Sound();
-
 
 
     private int difficulty;
@@ -69,7 +66,7 @@ public class GamePanel extends JPanel implements Observer {
         add(resultInput);
         resultInput.addActionListener(theHandler);
 
-        ok=new JButton("OK");
+        ok = new JButton("OK");
         ok.setFont(inputFont);
         ok.setHorizontalAlignment(JTextField.CENTER);
         ok.setBounds(485, 250, 80, 50);
@@ -127,6 +124,7 @@ public class GamePanel extends JPanel implements Observer {
 
     /**
      * Sets the remaining time on the gamePanel
+     *
      * @param seconds remaining seconds
      */
     public void setTimer(String seconds) {
@@ -155,6 +153,7 @@ public class GamePanel extends JPanel implements Observer {
 
     /**
      * Created by Jurij
+     *
      * @param difficulty determines the difficulty of the calculation
      */
     public void setCalc(int difficulty) {
@@ -168,8 +167,8 @@ public class GamePanel extends JPanel implements Observer {
      * Created by Jurij
      * Class to determine the behaviour of the OK-Button
      */
-    public class Handler implements ActionListener{
-        boolean firstTime=true;
+    public class Handler implements ActionListener {
+        boolean firstTime = true;
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -239,7 +238,7 @@ public class GamePanel extends JPanel implements Observer {
 
 
                 }
-            }catch (Exception E ){
+            } catch (Exception E) {
                 System.out.println("maybe problem");
             }
 
@@ -250,8 +249,8 @@ public class GamePanel extends JPanel implements Observer {
     /**
      * Preparation for exiting the gamePanel
      */
-    public void prepareTheEnd(){
-        term.setText("Your Score: "+game.getScore());
+    public void prepareTheEnd() {
+        term.setText("Your Score: " + game.getScore());
         resultInput.setText("Enter your Name");
 
     }

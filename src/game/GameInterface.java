@@ -5,6 +5,7 @@ package game;
  */
 public interface GameInterface {
     public int getScore();
+
     public void setScore(int score);
 
     public int getDifficulty();

@@ -5,9 +5,11 @@ package game;
  */
 public interface PlayerScoreInterface {
     public String getPlayerName();
+
     public void setPlayerName(String playerName);
 
     public int getScore();
+
     public void setScore(int score);
 
 

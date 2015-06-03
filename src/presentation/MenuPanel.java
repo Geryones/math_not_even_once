@@ -2,7 +2,6 @@ package presentation;
 
 import business.businessGame.BusinessGame;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +10,7 @@ import java.awt.event.ActionListener;
 
 /**
  * The menu.
- *
+ * <p/>
  * Created by simon on 12.04.15.
  */
 public class MenuPanel extends JPanel {
@@ -23,7 +22,7 @@ public class MenuPanel extends JPanel {
     JButton exit = new JButton("Beenden");
     JButton highscore = new JButton("Highscore");
     JButton help = new JButton("Hilfe");
-    private JLabel savedGame=new JLabel();
+    private JLabel savedGame = new JLabel();
     BusinessGame newBusinessGame;
     BusinessGame businessGame = new BusinessGame();
 
@@ -65,7 +64,7 @@ public class MenuPanel extends JPanel {
 
         actualiseSaveGame();
 
-        add(savedGame).setBounds(500,250,300,80);
+        add(savedGame).setBounds(500, 250, 300, 80);
 
 
         load.addActionListener(cl);
@@ -74,7 +73,7 @@ public class MenuPanel extends JPanel {
         // footer navigation and copyright
         JPanel footer = new JPanel();
         footer.setLayout(new FlowLayout());
-        add(footer).setBounds(0,530,300,40);
+        add(footer).setBounds(0, 530, 300, 40);
         footer.add(exit);
         exit.addActionListener(cl);
         footer.add(highscore);
@@ -82,7 +81,7 @@ public class MenuPanel extends JPanel {
         footer.add(help);
         JLabel copyright = new JLabel("© 2015 Jurij Maïkoff, Simon Leber");
         copyright.setHorizontalAlignment(JLabel.RIGHT);
-        add(copyright).setBounds(400,560,380,40);
+        add(copyright).setBounds(400, 560, 380, 40);
 
     }
 
@@ -90,12 +89,12 @@ public class MenuPanel extends JPanel {
      * created by Jurij
      * Function to actualise the information about the saved game on the gamePanel
      */
-    public void actualiseSaveGame(){
+    public void actualiseSaveGame() {
         try {
             String difficulty;
             try {
                 newBusinessGame = (BusinessGame) businessGame.loadGame();
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("MenuPanel: Failed to load the save-file");
             }
             if (newBusinessGame == null) {
@@ -122,7 +121,7 @@ public class MenuPanel extends JPanel {
                         "Verbleibende Zeit: " + newBusinessGame.getRemainingTime() +
                         "</HTML>");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("The Saved Game could not be actualised");
         }
 

@@ -3,7 +3,7 @@ package business.calc;
 /**
  * Created by mai714 on 02.03.2015.
  */
-public abstract class AbstractCalc implements InterfaceCalc{
+public abstract class AbstractCalc implements InterfaceCalc {
     private int result;
 
     public int getResult() {

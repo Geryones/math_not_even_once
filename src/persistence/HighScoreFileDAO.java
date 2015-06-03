@@ -14,20 +14,18 @@ import java.util.Comparator;
  * Created by mai714 on 24.04.2015.
  * Class to Read and Save the HighScore
  */
-public class HighScoreFileDAO implements HighScoreDAO,Serializable {
-
+public class HighScoreFileDAO implements HighScoreDAO, Serializable {
 
 
     /**
-     *
      * Function to save a new HighScore
      * First it checks if the HighScore is actually a Highscore  and then saves the list
-     * @param playerScore an object of BusinessPlayerScore, which holds the name and score of a Player
      *
+     * @param playerScore an object of BusinessPlayerScore, which holds the name and score of a Player
      */
     @Override
     public void saveHighScore(PlayerScoreInterface playerScore) {
-        int maxHighScoreSize=10;
+        int maxHighScoreSize = 10;
         //System.out.println("saveHigh DAO erreicht");
         ArrayList<PlayerScoreInterface> highScoreList = getHighScoreList();
 
@@ -39,7 +37,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
             highScoreList.add(playerScore);
             highScoreList = sortLowTopHighScoreList(highScoreList);
             highScoreList.remove(0);
-        //if there arent 10 objects in the list, the new one is just being added
+            //if there arent 10 objects in the list, the new one is just being added
         } else if (highScoreList.size() < maxHighScoreSize) {
             highScoreList.add(playerScore);
         }
@@ -61,12 +59,14 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
 /*
 
     */
-/**
+
+    /**
      * Function to pass a list of BusinessPlayersScore-Objects and Save them
+     *
      * @param theList List of BusniessPlayerScore objects [0] playername (String), [1]score (int)
      */
 
-    public void justSaveHighScoreList(ArrayList<BusinessPlayerScore> theList){
+    public void justSaveHighScoreList(ArrayList<BusinessPlayerScore> theList) {
         try {
             FileOutputStream fileOutput = new FileOutputStream("src/resources/saveFiles/highScore.ser");
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
@@ -82,6 +82,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
 
     /**
      * Function to get the HighScore-List out of the saved File
+     *
      * @return ArrayList of Type BusinessPlayerScore which represents the HighScoreList
      */
     @Override
@@ -100,7 +101,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
             // System.out.println("dritte zeile getHighScoreList");
             objectInput.close();
             fileInput.close();
-           // System.out.println("volle liste in getHighScoreList erstellt");
+            // System.out.println("volle liste in getHighScoreList erstellt");
             return scoreList;
 
         } catch (Exception e) {
@@ -113,15 +114,16 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
 
     /**
      * Function to sort the HighScore-List (Ascending, [0]= lowest value)
+     *
      * @param highScoreList The list, which should be sorted
      * @return sorted ArrayList of type BusinessPlayerScore
      */
-    public ArrayList<PlayerScoreInterface> sortLowTopHighScoreList(ArrayList<PlayerScoreInterface> highScoreList){
+    public ArrayList<PlayerScoreInterface> sortLowTopHighScoreList(ArrayList<PlayerScoreInterface> highScoreList) {
 
         Collections.sort(highScoreList, new Comparator<PlayerScoreInterface>() {
             @Override
             public int compare(PlayerScoreInterface o1, PlayerScoreInterface o2) {
-                return o1.getPlayerScore()-o2.getPlayerScore();
+                return o1.getPlayerScore() - o2.getPlayerScore();
             }
         });
 
@@ -130,10 +132,11 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
 
     /**
      * Function to sort the HighScore-List (Descending, [0]= Highest Value)
+     *
      * @param highScoreList The list, which should be sorted
      * @return sorted ArrayList of type BusinessPlayerScore
      */
-    public ArrayList<PlayerScoreInterface> sortHighTopHighScoreList(ArrayList<PlayerScoreInterface> highScoreList){
+    public ArrayList<PlayerScoreInterface> sortHighTopHighScoreList(ArrayList<PlayerScoreInterface> highScoreList) {
         try {
             Collections.sort(highScoreList, new Comparator<PlayerScoreInterface>() {
                 @Override
@@ -143,7 +146,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
             });
 
             return highScoreList;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("HighScoreFileDAO: Unable to sort HighScoreList, Does it exist?");
             return null;
         }
@@ -152,14 +155,15 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
 
     /**
      * This function checks a playerScore if it is a HighScore
+     *
      * @param score a Players score
      * @return boolean if it is a highScore
      */
-    public boolean isHighScore(int score){
+    public boolean isHighScore(int score) {
         int temp;
-        for (int i=0;i<getHighScoreList().size();i++){
-            temp= getHighScoreList().get(i).getPlayerScore();
-            if (score>temp){
+        for (int i = 0; i < getHighScoreList().size(); i++) {
+            temp = getHighScoreList().get(i).getPlayerScore();
+            if (score > temp) {
                 return true;
             }
         }
