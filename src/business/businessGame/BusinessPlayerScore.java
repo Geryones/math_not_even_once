@@ -51,8 +51,13 @@ public class BusinessPlayerScore  implements Serializable, PlayerScoreInterface 
      * @return ArrayList of the type BusinessPlayerScore which holds up to 10 BusinessPlayerScore-Objects
      */
     public ArrayList<PlayerScoreInterface> loadHighScore(){
-        HighScoreDAO highScoreDAO = new HighScoreFileDAO();
-        return highScoreDAO.getHighScoreList();
+        try {
+            HighScoreDAO highScoreDAO = new HighScoreFileDAO();
+            return highScoreDAO.getHighScoreList();
+        }catch (Exception e){
+            System.out.println("HighScore konnte nicht geladen werden");
+            return null;
+        }
     }
 
     /**
@@ -60,8 +65,13 @@ public class BusinessPlayerScore  implements Serializable, PlayerScoreInterface 
      * @return an ArrayList with the HighScore
      */
     public ArrayList<PlayerScoreInterface> sortHighScoreDesc(){
-        HighScoreFileDAO highScoreFileDAO = new HighScoreFileDAO();
-        return highScoreFileDAO.sortHighTopHighScoreList(loadHighScore());
+        try {
+            HighScoreFileDAO highScoreFileDAO = new HighScoreFileDAO();
+            return highScoreFileDAO.sortHighTopHighScoreList(loadHighScore());
+        }catch (Exception e){
+            System.out.println("BusinessPlayerScore: Cant sort HighScore list, list does not exist");
+            return null;
+        }
     }
 
     public int getTheHighScore(){

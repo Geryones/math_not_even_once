@@ -59,7 +59,9 @@ public class Gui  extends JFrame  {
      */
     public void loadGame(BusinessGame businessGame) {
         remove(menu);
-        game = new GamePanel(businessGame.getDifficulty());
+      try {
+            game = new GamePanel(businessGame.getDifficulty());
+
         game.timerTeil.setTotalDuration(businessGame.getRemainingTime());
         game.game.setDifficulty(businessGame.getDifficulty());
         game.game.setRemainingTime(businessGame.getRemainingTime());
@@ -68,8 +70,14 @@ public class Gui  extends JFrame  {
         game.game.setScore(businessGame.getScore());
         game.highscoreBar.setHighScoreProgress(game.game.getScore());
         add(game).setBounds(0, 0, 800, 600);
+            repaint();
 
-        repaint();
+        }catch (Exception e){
+            System.out.println("Gui: failed to load the game");
+          JOptionPane.showMessageDialog(menu,"Game Crashed, plz quit and restart the game");
+       }
+
+
     }
 
     public void showHighScore() {

@@ -3,6 +3,7 @@ package business.businessGame;
 import game.GameInterface;
 import persistence.SavedGameFileDAO;
 import java.io.Serializable;
+import java.util.concurrent.ExecutionException;
 
 /**
  * This class is created to prevent a violation of the layer-Access
@@ -49,9 +50,14 @@ public class BusinessGame implements Serializable, GameInterface{
      * @return BussinessGame-Object
      */
     public GameInterface loadGame(){
-        //System.out.println("im BusinessGame angekommen");
+       try{
+           return saveGameDAO.loadGame();
+       }catch (Exception e){
+           System.out.println("BusinessGame: Failed to load game");
+           return null;
+       }
 
-        return saveGameDAO.loadGame();
+
     }
 
 

@@ -87,6 +87,7 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
     @Override
     public ArrayList<PlayerScoreInterface> getHighScoreList() {
 
+
         ArrayList<PlayerScoreInterface> scoreList;
 
         try {
@@ -103,8 +104,8 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
             return scoreList;
 
         } catch (Exception e) {
-            e.printStackTrace();
-          //System.out.println("keine Liste konnte erstellt werden");
+
+            System.out.println("HighScoreFileDAO: could not get a HighScoreList, no Save-File?");
             return null;
         }
 
@@ -133,15 +134,19 @@ public class HighScoreFileDAO implements HighScoreDAO,Serializable {
      * @return sorted ArrayList of type BusinessPlayerScore
      */
     public ArrayList<PlayerScoreInterface> sortHighTopHighScoreList(ArrayList<PlayerScoreInterface> highScoreList){
+        try {
+            Collections.sort(highScoreList, new Comparator<PlayerScoreInterface>() {
+                @Override
+                public int compare(PlayerScoreInterface o1, PlayerScoreInterface o2) {
+                    return o2.getPlayerScore() - o1.getPlayerScore();
+                }
+            });
 
-        Collections.sort(highScoreList, new Comparator<PlayerScoreInterface>() {
-            @Override
-            public int compare(PlayerScoreInterface o1, PlayerScoreInterface o2) {
-                return o2.getPlayerScore()-o1.getPlayerScore();
-            }
-        });
-
-        return highScoreList;
+            return highScoreList;
+        }catch (Exception e){
+            System.out.println("HighScoreFileDAO: Unable to sort HighScoreList, Does it exist?");
+            return null;
+        }
     }
 
 

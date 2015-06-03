@@ -91,33 +91,39 @@ public class MenuPanel extends JPanel {
      * Function to actualise the information about the saved game on the gamePanel
      */
     public void actualiseSaveGame(){
-        String difficulty;
-
-        newBusinessGame= (BusinessGame) businessGame.loadGame();
-
-        if (newBusinessGame==null){
-            savedGame.setText("Zurzeit kein gespeichertes Spiel");
-        }else{
-            switch (newBusinessGame.getDifficulty()){
-                case 0:
-                    difficulty="einfach";
-                    break;
-                case 1:
-                    difficulty="mittel";
-                    break;
-                case 2:
-                    difficulty="hard";
-                    break;
-                default:
-                    difficulty="Problem?";
+        try {
+            String difficulty;
+            try {
+                newBusinessGame = (BusinessGame) businessGame.loadGame();
+            }catch (Exception e){
+                System.out.println("MenuPanel: Failed to load the save-file");
             }
-            savedGame.setText("<HTML>" +
-                    "SpielerName: " + newBusinessGame.getPlayerName() + "<br>" +
-                    "Schwierigkeitsgrad: " + difficulty + "<br>" +
-                    "Gelöste Rechnungen: " + newBusinessGame.getCountSolvedCalculations() + "<br>" +
-                    "Score: " + newBusinessGame.getScore() + "<br>" +
-                    "Verbleibende Zeit: " + newBusinessGame.getRemainingTime() +
-                    "</HTML>");
+            if (newBusinessGame == null) {
+                savedGame.setText("no saved game");
+            } else {
+                switch (newBusinessGame.getDifficulty()) {
+                    case 0:
+                        difficulty = "einfach";
+                        break;
+                    case 1:
+                        difficulty = "mittel";
+                        break;
+                    case 2:
+                        difficulty = "hard";
+                        break;
+                    default:
+                        difficulty = "Problem?";
+                }
+                savedGame.setText("<HTML>" +
+                        "SpielerName: " + newBusinessGame.getPlayerName() + "<br>" +
+                        "Schwierigkeitsgrad: " + difficulty + "<br>" +
+                        "Gelöste Rechnungen: " + newBusinessGame.getCountSolvedCalculations() + "<br>" +
+                        "Score: " + newBusinessGame.getScore() + "<br>" +
+                        "Verbleibende Zeit: " + newBusinessGame.getRemainingTime() +
+                        "</HTML>");
+            }
+        }catch (Exception e){
+            System.out.println("The Saved Game could not be actualised");
         }
 
     }

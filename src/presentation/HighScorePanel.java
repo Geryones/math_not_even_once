@@ -33,14 +33,18 @@ public class HighScorePanel extends JPanel {
         setLayout(null);
 
         businessPlayerScore = new BusinessPlayerScore();
-        ArrayList<PlayerScoreInterface> highScoreList=businessPlayerScore.sortHighScoreDesc();
+        try {
+            ArrayList<PlayerScoreInterface> highScoreList = businessPlayerScore.sortHighScoreDesc();
 
-        for (int i =0;i<highScoreList.size();i++){
-            labelArrayList.add(new JLabel());
-            labelArrayList.get(i).setText(highScoreList.get(i).getPlayerName()+"  "+highScoreList.get(i).getPlayerScore());
-            labelArrayList.get(i).setBounds(100,25+(i*50),650,50);
-           labelArrayList.get(i).setFont(new Font("SansSerif", Font.BOLD, 25));
-            add(labelArrayList.get(i));
+            for (int i = 0; i < highScoreList.size(); i++) {
+                labelArrayList.add(new JLabel());
+                labelArrayList.get(i).setText(highScoreList.get(i).getPlayerName() + "  " + highScoreList.get(i).getPlayerScore());
+                labelArrayList.get(i).setBounds(100, 25 + (i * 50), 650, 50);
+                labelArrayList.get(i).setFont(new Font("SansSerif", Font.BOLD, 25));
+                add(labelArrayList.get(i));
+            }
+        }catch (Exception e){
+            System.out.println("Panel: no HighScore, nothing to show");
         }
 
         ActionListener menuButtonListener = new ActionListener() {
