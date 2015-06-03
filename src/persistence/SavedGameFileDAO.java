@@ -58,8 +58,8 @@ public class SavedGameFileDAO implements SavedGameDAO,Serializable {
 
             return game;
         }catch(Exception e){
-           // System.out.println("leeres gameObject zurückgegeben");
-            e.printStackTrace();
+           System.out.println("SavedGameFileDAO: could not open the Save-File");
+
             return null;
         }
 
