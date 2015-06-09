@@ -99,7 +99,7 @@ public class GamePanel extends JPanel implements Observer {
         add(menu);
 
         // the countdown
-        timer = new JLabel("⌚ " + "23" + " s");
+        timer = new JLabel();
         timer.setBounds(400, 500, 350, 50);
         timer.setBackground(Color.cyan);
         timer.setFont(new Font("SansSerif", Font.PLAIN, 50));
@@ -129,7 +129,7 @@ public class GamePanel extends JPanel implements Observer {
      */
     public void setTimer(String seconds) {
 
-        timer.setText("⌚ " + seconds + " s");
+        timer.setText(seconds + " s");
     }
 
     /**
