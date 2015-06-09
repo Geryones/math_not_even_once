@@ -72,7 +72,7 @@ public class Gui extends JFrame {
 
         } catch (Exception e) {
             System.out.println("Gui: failed to load the game");
-            JOptionPane.showMessageDialog(menu, "Game Crashed, plz quit and restart the game");
+            JOptionPane.showMessageDialog(menu, "Game Crashed, please quit and restart the game");
         }
 
 
