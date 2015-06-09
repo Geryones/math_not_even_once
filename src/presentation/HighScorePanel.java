@@ -1,7 +1,7 @@
 package presentation;
 
 import business.businessGame.BusinessPlayerScore;
-import game.PlayerScoreInterface;
+import persistence.PlayerScoreInterface;
 
 import javax.swing.*;
 import java.awt.*;

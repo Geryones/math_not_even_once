@@ -1,8 +1,6 @@
 package persistence;
 
 
-import game.PlayerScoreInterface;
-
 import java.util.ArrayList;
 
 /**

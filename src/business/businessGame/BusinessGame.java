@@ -1,6 +1,6 @@
 package business.businessGame;
 
-import game.GameInterface;
+import persistence.GameInterface;
 import persistence.SavedGameFileDAO;
 
 import java.io.Serializable;

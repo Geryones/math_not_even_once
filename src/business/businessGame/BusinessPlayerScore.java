@@ -1,7 +1,7 @@
 package business.businessGame;
 
 
-import game.PlayerScoreInterface;
+import persistence.PlayerScoreInterface;
 import persistence.HighScoreDAO;
 import persistence.HighScoreFileDAO;
 

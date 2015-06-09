@@ -1,7 +1,6 @@
 package persistence;
 
 import business.businessGame.BusinessGame;
-import game.GameInterface;
 
 import java.io.*;
 

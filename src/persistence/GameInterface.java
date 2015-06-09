@@ -1,4 +1,4 @@
-package game;
+package persistence;
 
 /**
  * Created by mai714 on 26.05.2015.

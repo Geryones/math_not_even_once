@@ -2,7 +2,6 @@ package persistence;
 
 
 import business.businessGame.BusinessPlayerScore;
-import game.PlayerScoreInterface;
 
 import java.io.*;
 import java.util.ArrayList;

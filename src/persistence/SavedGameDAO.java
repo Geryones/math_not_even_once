@@ -1,8 +1,6 @@
 package persistence;
 
 
-import game.GameInterface;
-
 /**
  * Created by mai714 on 24.04.2015.
  */
