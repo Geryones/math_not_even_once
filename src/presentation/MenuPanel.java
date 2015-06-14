@@ -9,9 +9,10 @@ import java.awt.event.ActionListener;
 
 
 /**
- * The menu.
- * <p/>
  * Created by simon on 12.04.15.
+ *
+ * The menu with the logo, buttons to start a new game, load a game, view the high score,
+ * view the help and exit.
  */
 public class MenuPanel extends JPanel {
 
@@ -85,17 +86,13 @@ public class MenuPanel extends JPanel {
 
     }
 
-    /**
-     * created by Jurij
-     * Function to actualise the information about the saved game on the gamePanel
-     */
     public void actualiseSaveGame() {
         try {
             String difficulty;
             try {
                 newBusinessGame = (BusinessGame) businessGame.loadGame();
             } catch (Exception e) {
-                System.out.println("MenuPanel: Failed to load the save-file");
+                System.err.println("Failed to load the save file");
             }
             if (newBusinessGame == null) {
                 savedGame.setText("no saved game");
@@ -111,7 +108,7 @@ public class MenuPanel extends JPanel {
                         difficulty = "hard";
                         break;
                     default:
-                        difficulty = "Problem?";
+                        difficulty = "einfach";
                 }
                 savedGame.setText("<HTML>" +
                         "SpielerName: " + newBusinessGame.getPlayerName() + "<br>" +
@@ -122,7 +119,7 @@ public class MenuPanel extends JPanel {
                         "</HTML>");
             }
         } catch (Exception e) {
-            System.out.println("The Saved Game could not be actualised");
+            System.err.println("The Saved Game could not be actualised.");
         }
 
     }

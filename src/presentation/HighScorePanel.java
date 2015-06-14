@@ -10,8 +10,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * Created by mai714 on 04.05.2015.
- * Panel where u can see the whole HighScore-List
+ * Created by simon on 04.05.2015.
+ *
+ * Displays the high score list
  */
 public class HighScorePanel extends JPanel {
 

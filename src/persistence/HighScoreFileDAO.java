@@ -36,7 +36,7 @@ public class HighScoreFileDAO implements HighScoreDAO, Serializable {
             highScoreList.add(playerScore);
             highScoreList = sortLowTopHighScoreList(highScoreList);
             highScoreList.remove(0);
-            //if there arent 10 objects in the list, the new one is just being added
+            //if there aren't 10 objects in the list, the new one is just being added
         } else if (highScoreList.size() < maxHighScoreSize) {
             highScoreList.add(playerScore);
         }
@@ -80,7 +80,7 @@ public class HighScoreFileDAO implements HighScoreDAO, Serializable {
     }
 
     /**
-     * Function to get the HighScore-List out of the saved File
+     * Function to get the HighScoreList out of the saved file
      *
      * @return ArrayList of Type BusinessPlayerScore which represents the HighScoreList
      */
@@ -105,7 +105,7 @@ public class HighScoreFileDAO implements HighScoreDAO, Serializable {
 
         } catch (Exception e) {
 
-            System.out.println("HighScoreFileDAO: could not get a HighScoreList, no Save-File?");
+            System.out.println("HighScoreFileDAO: could not get a HighScoreList, no save file?");
             return null;
         }
 
@@ -146,14 +146,14 @@ public class HighScoreFileDAO implements HighScoreDAO, Serializable {
 
             return highScoreList;
         } catch (Exception e) {
-            System.out.println("HighScoreFileDAO: Unable to sort HighScoreList, Does it exist?");
+            System.out.println("HighScoreFileDAO: Unable to sort HighScoreList, does it exist?");
             return null;
         }
     }
 
 
     /**
-     * This function checks a playerScore if it is a HighScore
+     * This function checks if a playerScore is a HighScore
      *
      * @param score a Players score
      * @return boolean if it is a highScore

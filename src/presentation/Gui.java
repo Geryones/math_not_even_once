@@ -6,6 +6,8 @@ import javax.swing.*;
 
 /**
  * Created by simon on 06.04.15.
+ *
+ * The JFrame which contains the different panels
  */
 public class Gui extends JFrame {
 
@@ -34,7 +36,6 @@ public class Gui extends JFrame {
     }
 
     public void showMenu() {
-        endGame();
         if (game != null) remove(game);
         if (highScorePanel != null) remove(highScorePanel);
         menu.actualiseSaveGame();
@@ -83,10 +84,6 @@ public class Gui extends JFrame {
         highScorePanel = new HighScorePanel();
         add(highScorePanel).setBounds(0, 0, 800, 600);
         repaint();
-    }
-
-    public void endGame() {
-        // TODO: end the game if running. ask player if game should be saved
     }
 
 

@@ -16,6 +16,9 @@ import java.util.Observer;
 
 /**
  * Created by simon on 12.04.15.
+ *
+ * This class draws the actual game with the term to solve, an input field for the result,
+ * the timer and some buttons.
  */
 public class GamePanel extends JPanel implements Observer {
 
@@ -184,11 +187,9 @@ public class GamePanel extends JPanel implements Observer {
                     if (resultInput.getText().equals("")) {
 
                     /*
-                    If the time is 0, and the user is not Saving, come here
+                    If the time is 0, and the user is not saving, come here
                      */
                     } else if (timerTeil.getRemainingTime() == 0 && !isSaving) {
-
-
                         playerScore.setPlayerName(resultInput.getText());
                         playerScore.setScore(game.getScore());
                         BusinessPlayerScore businessPlayerScore = new BusinessPlayerScore(playerScore);
@@ -200,8 +201,6 @@ public class GamePanel extends JPanel implements Observer {
                     maybe errors if you enter a string which is not numbers only
                      */
                     } else if (!isSaving && calcInterface.correct(Integer.parseInt(resultInput.getText()))) {
-
-
                         setCalc(getDifficulty());
                         resultInput.setText(null);
                         game.setCountSolvedCalculations(game.getCountSolvedCalculations() + 1);
@@ -214,11 +213,10 @@ public class GamePanel extends JPanel implements Observer {
                         }
 
                     /*
-                     if the user wants to safe, the boolean isSaving brings you here
-                      All the necessary Information is transfered and saved
+                     if the user wants to safe, the boolean isSaving brings you here.
+                      All the necessary Information is transferred and saved
                      */
                     } else if (isSaving) {
-
                         game.setPlayerName(resultInput.getText());
                         businessGame = new BusinessGame(game);
                         businessGame.safeGame();
@@ -228,9 +226,10 @@ public class GamePanel extends JPanel implements Observer {
                     }
             /*
             if you hit the save button midgame
-            the timer gets canceld
+            the timer gets canceled
              */
                 } else if (e.getSource().equals(save)) {
+
                     game.setRemainingTime(timerTeil.getRemainingTime());
                     timerTeil.setIsRunning(false);
                     isSaving = true;
