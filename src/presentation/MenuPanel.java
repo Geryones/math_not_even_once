@@ -16,16 +16,16 @@ import java.awt.event.ActionListener;
  */
 public class MenuPanel extends JPanel {
 
-    JButton easy = new JButton("einfach");
-    JButton medium = new JButton("mittel");
-    JButton hard = new JButton("schwer");
-    JButton load = new JButton("Laden");
-    JButton exit = new JButton("Beenden");
-    JButton highscore = new JButton("Highscore");
-    JButton help = new JButton("Hilfe");
+    private JButton easy = new JButton("einfach");
+    private JButton medium = new JButton("mittel");
+    private JButton hard = new JButton("schwer");
+    private JButton load = new JButton("Laden");
+    private JButton exit = new JButton("Beenden");
+    private JButton highscore = new JButton("Highscore");
+    private JButton help = new JButton("Hilfe");
     private JLabel savedGame = new JLabel();
-    BusinessGame newBusinessGame;
-    BusinessGame businessGame = new BusinessGame();
+    private BusinessGame newBusinessGame;
+    private BusinessGame businessGame = new BusinessGame();
 
 
     public MenuPanel() {
@@ -80,6 +80,7 @@ public class MenuPanel extends JPanel {
         footer.add(highscore);
         highscore.addActionListener(cl);
         footer.add(help);
+        help.addActionListener(cl);
         JLabel copyright = new JLabel("© 2015 Jurij Maïkoff, Simon Leber");
         copyright.setHorizontalAlignment(JLabel.RIGHT);
         add(copyright).setBounds(400, 560, 380, 40);
@@ -139,8 +140,7 @@ public class MenuPanel extends JPanel {
             } else if (e.getSource() == highscore) {
                 Gui.getInstance().showHighScore();
             } else if (e.getSource() == help) {
-                System.out.println("not yet implemented");
-
+                Gui.getInstance().showHelp();
             }
         }
     }

@@ -23,7 +23,7 @@ public class HighScorePanel extends JPanel {
 
 
     /**
-     * Constructor, 10 JLabel's are created and filled with PlayerName and the Score
+     * Constructor, 10 JLabel's are created and filled with player names and their scores
      */
     public HighScorePanel() {
         JButton menu = new JButton("Menü");

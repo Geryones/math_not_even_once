@@ -12,9 +12,10 @@ import javax.swing.*;
 public class Gui extends JFrame {
 
     private static Gui instance;
-    GamePanel game;
-    MenuPanel menu = new MenuPanel();
-    HighScorePanel highScorePanel;
+    private GamePanel game;
+    private MenuPanel menu = new MenuPanel();
+    private HighScorePanel highScorePanel;
+    private HelpPanel help = new HelpPanel();
 
 
     private Gui() {
@@ -40,6 +41,12 @@ public class Gui extends JFrame {
         if (highScorePanel != null) remove(highScorePanel);
         menu.actualiseSaveGame();
         add(menu).setBounds(0, 0, 800, 600);
+        repaint();
+    }
+
+    public void showHelp() {
+        remove(menu);
+        add(help).setBounds(0, 0, 800, 600);
         repaint();
     }
 
