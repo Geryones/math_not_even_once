@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by simon on 02.05.15.
+ *
+ * Contains the help text
  */
 public class HelpPanel extends JPanel {
     private JLabel helpText = new JLabel();
@@ -20,16 +22,16 @@ public class HelpPanel extends JPanel {
                         "<dl>" +
                         "<dt><strong>einfach</strong></dt>" +
                         "<dd>Jede Aufgabe hat zwei Operanden.<br>" +
-                        "Punkte pro gelöste Aufgabe: <br>" +
-                        "Zusätzliche Zeit pro gelöste Aufgabe: <br></dd>" +
+                        "Punkte pro gelöste Aufgabe: 1<br>" +
+                        "Zusätzliche Zeit pro gelöste Aufgabe: 10 Sekunden<br></dd>" +
                         "<dt><b>mittel</b></dt>" +
                         "<dd>Jede Aufgabe hat drei Operanden, teilweise mit Klammern.<br>" +
-                        "Punkte pro gelöste Aufgabe: <br>" +
-                        "Zusätzliche Zeit pro gelöste Aufgabe: <br></dd>" +
+                        "Punkte pro gelöste Aufgabe: 2<br>" +
+                        "Zusätzliche Zeit pro gelöste Aufgabe: 20 Sekunden<br></dd>" +
                         "<dt><b>schwer</b></dt>" +
                         "<dd>Jede Aufgabe hat vier Operanden, teilweise mit Klammern.<br>" +
-                        "Punkte pro gelöste Aufgabe: <br>" +
-                        "Zusätzliche Zeit pro gelöste Aufgabe: <br></dd>" +
+                        "Punkte pro gelöste Aufgabe: 3<br>" +
+                        "Zusätzliche Zeit pro gelöste Aufgabe: 30 Sekunden<br></dd>" +
                         "</dl>" +
                         "Klicken Sie auf einen der drei Schwierigkeitsgrade um ein neues Spiel zu beginnen. Die " +
                         "Lösung muss in das Feld unter der Aufgabe eingegeben werden und wird nach dem Klick auf " +
@@ -50,11 +52,10 @@ public class HelpPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Gui.getInstance().showMenu();
-                System.out.print("Hallo");
             }
         };
 
-        menu.setBounds(20, 540, 120, 30);
+        menu.setBounds(20, 530, 120, 30);
         menu.addActionListener(menuButtonListener);
         add(menu);
     }
