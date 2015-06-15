@@ -249,8 +249,8 @@ public class GamePanel extends JPanel implements Observer {
      * Preparation for exiting the gamePanel
      */
     public void prepareTheEnd() {
-        term.setText("Your Score: " + game.getScore());
-        resultInput.setText("Enter your Name");
+        term.setText("Erreichte Punkte: " + game.getScore());
+        resultInput.setText("Name eingeben");
 
     }
 
