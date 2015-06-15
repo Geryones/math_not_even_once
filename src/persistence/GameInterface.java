@@ -1,7 +1,9 @@
 package persistence;
 
 /**
- * Created by mai714 on 26.05.2015.
+ * Created by simon and mai714 on 26.05.2015.
+ *
+ * interface for a game
  */
 public interface GameInterface {
     public int getScore();

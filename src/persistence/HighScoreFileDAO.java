@@ -10,14 +10,15 @@ import java.util.Comparator;
 
 
 /**
- * Created by mai714 on 24.04.2015.
- * Class to Read and Save the HighScore
+ * Created by simon and mai714 on 24.04.2015.
+ *
+ * reads and saves the high score
  */
 public class HighScoreFileDAO implements HighScoreDAO, Serializable {
 
 
     /**
-     * Function to save a new HighScore
+     * saves a new high score
      * First it checks if the HighScore is actually a Highscore  and then saves the list
      *
      * @param playerScore an object of BusinessPlayerScore, which holds the name and score of a Player
@@ -25,7 +26,7 @@ public class HighScoreFileDAO implements HighScoreDAO, Serializable {
     @Override
     public void saveHighScore(PlayerScoreInterface playerScore) {
         int maxHighScoreSize = 10;
-        //System.out.println("saveHigh DAO erreicht");
+
         ArrayList<PlayerScoreInterface> highScoreList = getHighScoreList();
 
         //if the score is higher than the lowest value, or there are less than 5 entries.
@@ -91,21 +92,16 @@ public class HighScoreFileDAO implements HighScoreDAO, Serializable {
         ArrayList<PlayerScoreInterface> scoreList;
 
         try {
-            //System.out.println("try block in getHighScoreList");
             FileInputStream fileInput = new FileInputStream("src/resources/saveFiles/highScore.ser");
-            //System.out.println("erste zeile getHighScoreList");
             ObjectInputStream objectInput = new ObjectInputStream(fileInput);
-            // System.out.println("zweite zeile getHighScoreList");
             scoreList = (ArrayList<PlayerScoreInterface>) objectInput.readObject();
-            // System.out.println("dritte zeile getHighScoreList");
             objectInput.close();
             fileInput.close();
-            // System.out.println("volle liste in getHighScoreList erstellt");
             return scoreList;
 
         } catch (Exception e) {
 
-            System.out.println("HighScoreFileDAO: could not get a HighScoreList, no save file?");
+            System.err.println("HighScoreFileDAO: could not get a HighScoreList, no save file?");
             return null;
         }
 
@@ -146,7 +142,7 @@ public class HighScoreFileDAO implements HighScoreDAO, Serializable {
 
             return highScoreList;
         } catch (Exception e) {
-            System.out.println("HighScoreFileDAO: Unable to sort HighScoreList, does it exist?");
+            System.err.println("HighScoreFileDAO: Unable to sort HighScoreList, does it exist?");
             return null;
         }
     }
