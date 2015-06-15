@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Observer {
     //von Jurij
     InterfaceCalc calcInterface;
     Handler theHandler = new Handler();
-    TimerClass timerTeil;
+    TimerClass timerPart;
     BusinessGame game = new BusinessGame();
     BusinessPlayerScore playerScore = new BusinessPlayerScore();
     BusinessGame businessGame;
@@ -93,7 +93,7 @@ public class GamePanel extends JPanel implements Observer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Gui.getInstance().showMenu();
-                timerTeil.setIsRunning(false);
+                timerPart.setIsRunning(false);
             }
         };
         menu.setFont(bottomButtons);
@@ -112,10 +112,10 @@ public class GamePanel extends JPanel implements Observer {
         requestFocusInWindow();
 
         //Adding the timer to the Gui
-        timerTeil = new TimerClass();
-        timerTeil.setTotalDuration(60);
+        timerPart = new TimerClass();
+        timerPart.setTotalDuration(60);
 
-        timerTeil.addObserver(this);
+        timerPart.addObserver(this);
 
         //Set up the Game-File and prepare the first Calculation
         setCalc(difficulty);
@@ -144,7 +144,7 @@ public class GamePanel extends JPanel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         String time = String.valueOf(arg);
-        //System.out.println(timerTeil.getRemainingTime());
+        //System.out.println(timerPart.getRemainingTime());
         if (time.equals("0")) {
             prepareTheEnd();
         }
@@ -189,7 +189,7 @@ public class GamePanel extends JPanel implements Observer {
                     /*
                     If the time is 0, and the user is not saving, come here
                      */
-                    } else if (timerTeil.getRemainingTime() == 0 && !isSaving) {
+                    } else if (timerPart.getRemainingTime() == 0 && !isSaving) {
                         playerScore.setPlayerName(resultInput.getText());
                         playerScore.setScore(game.getScore());
                         BusinessPlayerScore businessPlayerScore = new BusinessPlayerScore(playerScore);
@@ -205,7 +205,7 @@ public class GamePanel extends JPanel implements Observer {
                         resultInput.setText(null);
                         game.setCountSolvedCalculations(game.getCountSolvedCalculations() + 1);
                         game.setScore(game.getScore() + (difficulty + 1));
-                        timerTeil.setTotalDuration(timerTeil.getTotalDuration() + 10 * (1 + difficulty));
+                        timerPart.setTotalDuration(timerPart.getTotalDuration() + 10 * (1 + difficulty));
                         highscoreBar.setHighScoreProgress(game.getScore());
                         if (highscoreBar.getPercentage() == 1 && firstTime) {
                             sound.newHighScore();
@@ -230,8 +230,8 @@ public class GamePanel extends JPanel implements Observer {
              */
                 } else if (e.getSource().equals(save)) {
 
-                    game.setRemainingTime(timerTeil.getRemainingTime());
-                    timerTeil.setIsRunning(false);
+                    game.setRemainingTime(timerPart.getRemainingTime());
+                    timerPart.setIsRunning(false);
                     isSaving = true;
                     prepareTheEnd();
 

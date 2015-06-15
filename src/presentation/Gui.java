@@ -32,8 +32,6 @@ public class Gui extends JFrame {
 
         setVisible(true); // setVisible should be called last to assure the JFrame is not blank
         requestFocusInWindow();
-
-
     }
 
     public void showMenu() {
@@ -70,7 +68,7 @@ public class Gui extends JFrame {
         try {
             game = new GamePanel(businessGame.getDifficulty());
 
-            game.timerTeil.setTotalDuration(businessGame.getRemainingTime());
+            game.timerPart.setTotalDuration(businessGame.getRemainingTime());
             game.game.setDifficulty(businessGame.getDifficulty());
             game.game.setRemainingTime(businessGame.getRemainingTime());
             game.game.setPlayerName(businessGame.getPlayerName());
