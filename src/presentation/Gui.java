@@ -15,7 +15,7 @@ public class Gui extends JFrame {
     private GamePanel game;
     private MenuPanel menu = new MenuPanel();
     private HighScorePanel highScorePanel;
-    private HelpPanel help = new HelpPanel();
+    private HelpPanel help;
 
 
     private Gui() {
@@ -39,12 +39,14 @@ public class Gui extends JFrame {
     public void showMenu() {
         if (game != null) remove(game);
         if (highScorePanel != null) remove(highScorePanel);
+        if (help != null) remove(help);
         menu.actualiseSaveGame();
         add(menu).setBounds(0, 0, 800, 600);
         repaint();
     }
 
     public void showHelp() {
+        help = new HelpPanel();
         remove(menu);
         add(help).setBounds(0, 0, 800, 600);
         repaint();
